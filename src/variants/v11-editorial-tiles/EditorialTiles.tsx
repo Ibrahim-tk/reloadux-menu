@@ -3,12 +3,12 @@ import { describe } from '../../data/nav'
 import { LogoMark } from '../../shell/Logo'
 import { useOverflowHint } from '../../shell/useOverflowHint'
 import type { PanelProps } from '../types'
-import styles from './Editorial.module.css'
+import styles from './EditorialTiles.module.css'
 
 /** Past this many links, descriptions drop out so the menu stays inside the height cap. */
 const DESCRIPTION_LIMIT = 40
 
-export function Editorial({ menu }: PanelProps) {
+export function EditorialTiles({ menu }: PanelProps) {
   const mainRef = useOverflowHint<HTMLDivElement>()
   const railRef = useOverflowHint<HTMLElement>()
   const columns = [...menu.groups, ...menu.aside]
@@ -61,26 +61,27 @@ export function Editorial({ menu }: PanelProps) {
                 Latest articles
               </h3>
               <ul>
-                {menu.articles.slice(0, 2).map((a) => (
+                {menu.articles.map((a) => (
                   <li key={a.href}>
-                    <NavigationMenu.Link className={styles.article} href={a.href} aria-label={`${a.kicker}: ${a.label}`}>
-                      <span className={styles.cover} aria-hidden>
+                    <NavigationMenu.Link className={styles.tile} href={a.href} aria-label={`${a.type}: ${a.headline}`}>
+                      <span className={styles.thumb} aria-hidden>
                         <span className={styles.sheet}>
                           <span className={styles.coverLogo}>
                             <LogoMark />
                           </span>
-                          <span className={styles.kicker}>{a.kicker}</span>
                           <span className={styles.coverTitle}>{a.label}</span>
                         </span>
                       </span>
-                      <span className={styles.meta}>
-                        <span>{a.type}</span>
-                        <span className={styles.dot} aria-hidden>
-                          •
+                      <span className={styles.tileBody}>
+                        <span className={styles.meta}>
+                          <span>{a.type}</span>
+                          <span className={styles.dot} aria-hidden>
+                            •
+                          </span>
+                          <span>{a.topic}</span>
                         </span>
-                        <span>{a.topic}</span>
+                        <span className={styles.headline}>{a.headline}</span>
                       </span>
-                      <span className={styles.headline}>{a.headline}</span>
                     </NavigationMenu.Link>
                   </li>
                 ))}

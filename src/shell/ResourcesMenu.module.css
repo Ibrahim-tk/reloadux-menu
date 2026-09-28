@@ -1,0 +1,219 @@
+/* Resources dropdown — a small panel hung under its tab, not a full-width mega menu. */
+
+.wrap {
+  --rm-width: 40rem;
+  --mm-link: var(--color-gray-400);
+  --mm-muted: var(--color-gray-400);
+  padding-top: var(--spacing-8);
+}
+
+:global([data-theme="light"]) .wrap {
+  --mm-link: var(--color-text-secondary);
+  --mm-muted: var(--color-text-tertiary);
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  width: min(var(--rm-width), 100vw - 2 * var(--spacing-lg));
+  max-height: var(--mm-max-height, 70dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* Start under the tab, but never run off the right edge. */
+  margin-left: clamp(
+    var(--spacing-lg),
+    var(--anchor) - var(--spacing-lg),
+    100vw - var(--rm-width) - var(--spacing-lg)
+  );
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* ---------- Links — same type and hover as the v08 Editorial services menu ---------- */
+
+.linksCol {
+  padding: var(--spacing-xl);
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.eyebrow {
+  margin: 0 0 var(--spacing-12);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mm-muted);
+}
+
+.links {
+  display: grid;
+  gap: var(--spacing-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.linkLabel {
+  font-size: var(--font-size-body-sm); /* 16px */
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--mm-link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+/* The previewed link stays white; the hovered one also gets the underline. */
+.link[data-active] .linkLabel {
+  color: var(--color-text-primary);
+}
+
+.link:hover .linkLabel {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+/* ---------- Card stage ---------- */
+
+.stage {
+  display: grid;
+  padding: var(--spacing-xl);
+}
+
+/* All cards share one grid cell; only the active one shows. */
+.card {
+  grid-area: 1 / 1;
+  display: grid;
+  gap: var(--spacing-12);
+  text-decoration: none;
+  container-type: inline-size;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-out), visibility 0s linear var(--duration-base);
+}
+
+.card[data-active] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.card:focus-visible,
+.link:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Glow backdrop; the black cover sheet rises from the bottom and is cropped by it. */
+.cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0b0720 url("../assets/cta-bg.png") center top / cover no-repeat;
+}
+
+.sheet {
+  position: absolute;
+  left: 18%;
+  right: 20%;
+  top: 18.5%;
+  bottom: -12%;
+  display: flex;
+  flex-direction: column;
+  padding: 4cqi;
+  background: var(--color-black);
+  color: var(--color-white);
+  /* page edges peeking out behind the cover */
+  box-shadow:
+    1.3cqi 1.9cqi 0 0 var(--color-white),
+    2.6cqi 3.8cqi 0 0 color-mix(in srgb, var(--color-purple-500) 25%, var(--color-white));
+  transition: translate var(--duration-base) var(--ease-out);
+}
+
+.card:hover .sheet {
+  translate: 0 -2.5cqi;
+}
+
+.coverLogo {
+  position: relative;
+  display: block;
+  width: 7.5rem;
+  height: 1.6875rem;
+  scale: 0.5;
+  transform-origin: left top;
+  margin-bottom: auto;
+}
+
+.kicker {
+  font-size: 3cqi;
+  line-height: 1.3;
+  color: var(--color-gray-200);
+}
+
+.coverTitle {
+  margin-top: 1.6cqi;
+  font-size: 5.6cqi;
+  line-height: 1.08;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+  padding-bottom: 12cqi; /* keep the title clear of the cropped bottom edge */
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  color: var(--mm-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.dot {
+  font-size: 0.625rem;
+}
+
+.card:hover .meta {
+  color: var(--color-text-primary);
+}
+
+.headline {
+  /* Never more than two lines; longer headlines end in an ellipsis. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.card:hover .headline {
+  text-decoration-color: currentColor;
+}
+
+@media (max-width: 767px) {
+  .panel {
+    grid-template-columns: 1fr;
+  }
+  .linksCol {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+}

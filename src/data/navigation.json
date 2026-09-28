@@ -22,9 +22,10 @@
       "href": "/about"
     },
     {
-      "id": "blog",
-      "label": "blog",
-      "href": "/blog"
+      "id": "resources",
+      "label": "resources",
+      "href": "/resources",
+      "dropdown": "resources"
     }
   ],
   "cta": {
@@ -221,21 +222,24 @@
           "kicker": "Navigating AI Governance & Risk",
           "type": "Whitepaper",
           "topic": "Artificial Intelligence",
-          "href": "/resources/ai-governance-guide"
+          "href": "/resources/ai-governance-guide",
+          "headline": "How to use AI to enhance your user research"
         },
         {
           "label": "9 Patterns That Actually Work",
           "kicker": "Designing Trust into AI Features",
           "type": "Article",
           "topic": "AI Design",
-          "href": "/blog/designing-trust-into-ai-features"
+          "href": "/blog/designing-trust-into-ai-features",
+          "headline": "What makes users trust an AI feature, and how to design for it"
         },
         {
           "label": "Modernise Without Losing Power Users",
           "kicker": "Legacy SaaS Redesign",
           "type": "Case Study",
           "topic": "SaaS",
-          "href": "/work/legacy-saas-redesign"
+          "href": "/work/legacy-saas-redesign",
+          "headline": "Redesigning a 10-year-old SaaS without losing its power users"
         }
       ]
     }
@@ -498,5 +502,37 @@
     "Engagement Models": "Ways to work with us",
     "Resources": "Learn from our work"
   },
-  "descriptions_$comment": "Optional one-liners keyed by link label; variants that show descriptions look them up here."
+  "descriptions_$comment": "Optional one-liners keyed by link label; variants that show descriptions look them up here.",
+  "resources": {
+    "links": [
+      {
+        "id": "blog",
+        "label": "Blog",
+        "href": "/blog",
+        "card": {
+          "label": "9 Patterns That Actually Work",
+          "kicker": "Designing Trust into AI Features",
+          "type": "Article",
+          "topic": "AI Design",
+          "href": "/blog/designing-trust-into-ai-features",
+          "cta": "Read article",
+          "headline": "What makes users trust an AI feature, and how to design for it"
+        }
+      },
+      {
+        "id": "whitepapers",
+        "label": "Whitepapers",
+        "href": "/resources/whitepapers",
+        "card": {
+          "label": "A Practical Guide for C-Level Leaders",
+          "kicker": "Navigating AI Governance & Risk",
+          "type": "Whitepaper",
+          "topic": "Artificial Intelligence",
+          "href": "/resources/ai-governance-guide",
+          "cta": "Download whitepaper",
+          "headline": "How to use AI to enhance your user research"
+        }
+      }
+    ]
+  }
 }

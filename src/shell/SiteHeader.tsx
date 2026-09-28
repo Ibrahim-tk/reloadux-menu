@@ -1,9 +1,10 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import type { ComponentType } from 'react'
+import { useState, type ComponentType } from 'react'
 import chevron from '../assets/chevron.svg'
 import { nav, type MegaMenuData } from '../data/nav'
 import type { PanelProps } from '../variants/types'
 import { Logo } from './Logo'
+import { ResourcesMenu } from './ResourcesMenu'
 import styles from './SiteHeader.module.css'
 
 type Props = {
@@ -15,6 +16,10 @@ type Props = {
 }
 
 export function SiteHeader({ menus, Panel, value, onValueChange }: Props) {
+  // Left edge of the tab that owns a small dropdown, so the panel hangs beneath it.
+  const [anchor, setAnchor] = useState(0)
+  const measure = (e: { currentTarget: HTMLElement }) => setAnchor(e.currentTarget.getBoundingClientRect().left)
+
   return (
     <NavigationMenu.Root
       className={styles.root}
@@ -36,6 +41,16 @@ export function SiteHeader({ menus, Panel, value, onValueChange }: Props) {
                 </NavigationMenu.Trigger>
                 <NavigationMenu.Content className={styles.content}>
                   <Panel menu={menus[item.megaMenu]} />
+                </NavigationMenu.Content>
+              </NavigationMenu.Item>
+            ) : item.dropdown ? (
+              <NavigationMenu.Item key={item.id} value={item.dropdown}>
+                <NavigationMenu.Trigger className={styles.tab} onPointerEnter={measure} onFocus={measure}>
+                  {item.label}
+                  <img src={chevron} alt="" width={20} height={20} className={styles.chevron} />
+                </NavigationMenu.Trigger>
+                <NavigationMenu.Content className={styles.content}>
+                  <ResourcesMenu links={nav.resources.links} anchor={anchor} />
                 </NavigationMenu.Content>
               </NavigationMenu.Item>
             ) : (

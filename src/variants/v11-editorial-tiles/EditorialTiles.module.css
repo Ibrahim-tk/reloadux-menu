@@ -1,4 +1,5 @@
-/* v07 · Editorial — Lazarev-style: eyebrow-labelled described links, whitepaper-cover article rail. */
+/* v11 · Editorial Tiles — copy of Editorial with a wider rail, article tiles and a bordered CTA.
+   Original header: v07 · Editorial — Lazarev-style: eyebrow-labelled described links, whitepaper-cover article rail. */
 
 .panel {
   --mm-link: color-mix(in srgb, var(--color-gray-400) 70%, var(--color-gray-500)); /* subtle at rest, white on hover */
@@ -21,7 +22,7 @@
 .layout {
   --ed-height: calc(var(--mm-max-height, 70dvh) - 2px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 22rem;
+  grid-template-columns: minmax(0, 1fr) 30rem; /* wider rail for tiles */
   max-height: var(--ed-height);
 }
 
@@ -142,8 +143,8 @@
 
 .articlesTitle {
   margin: 0 0 var(--spacing-md);
-  font-size: var(--font-size-caption); /* 12px */
-  line-height: var(--line-height-caption);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
   font-weight: var(--font-weight-medium);
   color: var(--mm-muted);
 }
@@ -248,7 +249,7 @@
   -webkit-line-clamp: 2;
   line-clamp: 2;
   overflow: hidden;
-  font-size: var(--font-size-body-sm); /* 16px */
+  font-size: var(--font-size-body-md);
   line-height: var(--line-height-body-sm);
   font-weight: var(--font-weight-regular);
   color: var(--color-text-primary);
@@ -313,7 +314,7 @@
 
 @media (max-width: 1200px) {
   .layout {
-    grid-template-columns: minmax(0, 1fr) 18rem;
+    grid-template-columns: minmax(0, 1fr) 24rem;
   }
 }
 
@@ -341,4 +342,91 @@
   .panel {
     --ed-gutter: var(--spacing-lg); /* header drops to 24px here too */
   }
+}
+
+/* ---------- Article tiles (replace the big cards) ---------- */
+
+.articles ul {
+  gap: var(--spacing-md);
+}
+
+.tile {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  align-items: stretch;
+  gap: var(--spacing-md);
+  padding: 0; /* thumb runs the tile's full height */
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+/* Tiles are cards, so hover lifts them with a faint dark-grey surface rather than a border. */
+.tile:hover {
+  background: var(--color-gray-700);
+}
+
+.tile:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Small whitepaper cover; cqi sizes the sheet text off the thumb's own width. */
+.thumb {
+  position: relative;
+  display: block;
+  min-height: 4rem;
+  overflow: hidden;
+  container-type: inline-size;
+  background: #0b0720 url("../../assets/cta-bg.png") center top / cover no-repeat;
+}
+
+.thumb .sheet {
+  left: 16%;
+  right: 18%;
+  top: 18%;
+  top: 14%;
+  padding: 6cqi 7cqi;
+}
+
+.thumb .coverLogo {
+  scale: 0.26;
+  height: 1rem; /* collapse the logo box so the title sits right under it */
+  margin-bottom: 4cqi;
+}
+
+.thumb .coverTitle {
+  font-size: 7cqi;
+  line-height: 1.1;
+  padding-bottom: 0;
+}
+
+.tile:hover .sheet {
+  translate: 0 -3cqi;
+}
+
+.tileBody {
+  display: grid;
+  align-content: center;
+  padding: var(--spacing-8) var(--spacing-12) var(--spacing-8) 0;
+  gap: var(--spacing-2);
+  min-width: 0;
+}
+
+.tile:hover .meta {
+  color: var(--color-text-primary);
+}
+
+.tile:hover .headline {
+  text-decoration-color: currentColor;
+}
+
+/* Slimmer tile type: 12px meta, 16px headline. */
+.tile .meta {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+}
+
+.tile .headline {
+  font-size: var(--font-size-body-sm);
+  line-height: 1.35;
 }

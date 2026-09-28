@@ -5,7 +5,7 @@ export type NavGroup = { id: string; title: string; href?: string; links: NavLin
 export type Featured = { eyebrow: string; title: string; description: string; cta: NavLink }
 export type Solution = { title: string; subtitle: string; description: string; href: string; glyph: string }
 export type Promo = { title: string; description: string; href: string }
-export type Article = NavLink & { kicker: string; type: string; topic: string }
+export type Article = NavLink & { kicker: string; type: string; topic: string; headline: string }
 export type MegaMenuData = {
   groups: NavGroup[]
   aside: NavGroup[]
@@ -18,13 +18,16 @@ export type MegaMenuData = {
   statement?: string
   articles?: Article[]
 }
-export type TopNavItem = { id: string; label: string; href: string; megaMenu?: string }
+export type TopNavItem = { id: string; label: string; href: string; megaMenu?: string; dropdown?: string }
+export type ResourceCard = Article & { cta: string }
+export type ResourceLink = NavLink & { id: string; card: ResourceCard }
 
 type NavigationFile = {
   brand: { name: string; href: string }
   topNav: TopNavItem[]
   cta: NavLink
   megaMenus: Record<string, MegaMenuData>
+  resources: { links: ResourceLink[] }
   stressPool: { links: string[]; groups: NavGroup[]; aside: NavGroup[] }
   descriptions: Record<string, string>
 }
