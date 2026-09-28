@@ -1,0 +1,212 @@
+/* _Primitives */
+:root {
+  /* Value */
+  /* color */
+  --color-black: #000000;
+  --color-gray-100: #d9d9d9;
+  --color-gray-200: #d1d1d1;
+  --color-gray-300: #c3c3c3;
+  --color-gray-400: #a5a9ac;
+  --color-gray-50: #f5f5f5;
+  --color-gray-500: #565656;
+  --color-gray-600: #333333;
+  --color-gray-700: #1e1e1e;
+  --color-gray-800: #090909;
+  --color-purple-500: #7f56d9;
+  --color-purple-highlight: #7f56d97a;
+  --color-purple-hover: #7f56d966;
+  --color-purple-subtle: #7f56d926;
+  --color-white: #ffffff;
+  /* number */
+  --radius-0: 0rem;
+  --radius-full: 62.4375rem;
+  --spacing-0: 0rem;
+  --spacing-2: 0.125rem;
+  --spacing-4: 0.25rem;
+  --spacing-8: 0.5rem;
+  --spacing-12: 0.75rem;
+  --spacing-16: 1rem;
+  --spacing-20: 1.25rem;
+  --spacing-24: 1.5rem;
+  --spacing-32: 2rem;
+  --spacing-40: 2.5rem;
+  --spacing-48: 3rem;
+  --spacing-64: 4rem;
+  --spacing-80: 5rem;
+  --spacing-96: 6rem;
+  --spacing-120: 7.5rem;
+  --spacing-160: 10rem;
+  --stroke-icon-default: 0.0938rem;
+}
+/* Semantics */
+:root {
+  /* Light */
+  /* color */
+  --color-divider: var(--color-gray-300);
+  --color-accent-highlight: var(--color-purple-highlight);
+  --color-accent-primary: var(--color-purple-500);
+  --color-accent-subtle: var(--color-purple-subtle);
+  --color-border-card-hover: var(--color-purple-500);
+  --color-border-default: var(--color-gray-300);
+  --color-border-strong: var(--color-gray-500);
+  --color-border-subtle: var(--color-gray-100);
+  --color-icon-default: var(--color-gray-400);
+  --color-icon-hover: var(--color-purple-subtle);
+  --color-icon-primary: var(--color-black);
+  --color-icon-secondary: var(--color-gray-500);
+  --color-surface-card-hover: var(--color-purple-hover);
+  --color-surface-inverse: var(--color-gray-800);
+  --color-surface-primary: var(--color-gray-100);
+  --color-surface-secondary: var(--color-gray-50);
+  --color-surface-tertiary: var(--color-gray-100);
+  --color-text-inverse: var(--color-white);
+  --color-text-muted: var(--color-gray-200);
+  --color-text-primary: var(--color-black);
+  --color-text-secondary: var(--color-gray-500);
+  --color-text-tertiary: var(--color-gray-400);
+  /* number */
+  --spacing-xs: var(--spacing-4);
+  --spacing-sm: var(--spacing-8);
+  --spacing-md: var(--spacing-16);
+  --spacing-lg: var(--spacing-24);
+  --spacing-xl: var(--spacing-32);
+  --spacing-2xl: var(--spacing-48);
+  --spacing-3xl: var(--spacing-64);
+  --spacing-4xl: var(--spacing-96);
+  --spacing-section: var(--spacing-120);
+  --stroke-icon: var(--stroke-icon-default);
+  /* Dark */
+  /* color */
+  --color-divider: var(--color-gray-600);
+  --color-accent-highlight: var(--color-purple-highlight);
+  --color-accent-primary: var(--color-purple-500);
+  --color-accent-subtle: var(--color-purple-subtle);
+  --color-border-card-hover: var(--color-purple-500);
+  --color-border-default: var(--color-gray-600);
+  --color-border-strong: var(--color-gray-400);
+  --color-border-subtle: var(--color-gray-700);
+  --color-icon-default: var(--color-gray-400);
+  --color-icon-hover: var(--color-purple-subtle);
+  --color-icon-primary: var(--color-white);
+  --color-icon-secondary: var(--color-gray-400);
+  --color-surface-card-hover: var(--color-purple-hover);
+  --color-surface-inverse: var(--color-white);
+  --color-surface-primary: var(--color-gray-800);
+  --color-surface-secondary: var(--color-black);
+  --color-surface-tertiary: var(--color-black);
+  --color-text-inverse: var(--color-black);
+  --color-text-muted: var(--color-gray-500);
+  --color-text-primary: var(--color-white);
+  --color-text-secondary: var(--color-gray-300);
+  --color-text-tertiary: var(--color-gray-400);
+  /* number */
+  --spacing-xs: var(--spacing-4);
+  --spacing-sm: var(--spacing-8);
+  --spacing-md: var(--spacing-16);
+  --spacing-lg: var(--spacing-24);
+  --spacing-xl: var(--spacing-32);
+  --spacing-2xl: var(--spacing-48);
+  --spacing-3xl: var(--spacing-64);
+  --spacing-4xl: var(--spacing-96);
+  --spacing-section: var(--spacing-120);
+  --stroke-icon: var(--stroke-icon-default);
+}
+/* Typography */
+:root {
+  /* Desktop */
+  /* number */
+  --font-size-caption: 0.75rem;
+  --font-size-label-sm: 0.75rem;
+  --font-size-label-md: 0.875rem;
+  --font-size-overline: 0.875rem;
+  --font-size-body-sm: 1rem;
+  --font-size-body-md: 1.125rem;
+  --font-size-label-lg: 1.125rem;
+  --font-size-body-lg: 1.25rem;
+  --font-size-h6: 1.25rem;
+  --font-size-h5: 1.5rem;
+  --font-size-h4: 2rem;
+  --font-size-h3: 2.5rem;
+  --font-size-h2: 3rem;
+  --font-size-h1: 4rem;
+  --font-size-display: 5rem;
+  --line-height-caption: 1.125rem;
+  --line-height-label-sm: 1.125rem;
+  --line-height-label-md: 1.25rem;
+  --line-height-body-sm: 1.625rem;
+  --line-height-h6: 1.75rem;
+  --line-height-label-lg: 1.75rem;
+  --line-height-body-md: 2.125rem;
+  --line-height-h5: 2.125rem;
+  --line-height-body-lg: 2.5rem;
+  --line-height-h4: 2.5rem;
+  --line-height-h3: 3rem;
+  --line-height-overline: 3.75rem;
+  --line-height-h2: 4.125rem;
+  --line-height-h1: 4.75rem;
+  --line-height-display: 6.4375rem;
+  /* Tablet */
+  /* number */
+  --font-size-caption: 0.75rem;
+  --font-size-label-sm: 0.75rem;
+  --font-size-body-sm: 0.875rem;
+  --font-size-label-md: 0.875rem;
+  --font-size-overline: 0.875rem;
+  --font-size-body-md: 1rem;
+  --font-size-label-lg: 1rem;
+  --font-size-body-lg: 1.125rem;
+  --font-size-h6: 1.125rem;
+  --font-size-h5: 1.375rem;
+  --font-size-h4: 1.75rem;
+  --font-size-h3: 2rem;
+  --font-size-h2: 2.5rem;
+  --font-size-h1: 3rem;
+  --font-size-display: 3.5rem;
+  --line-height-caption: 1rem;
+  --line-height-label-sm: 1rem;
+  --line-height-label-md: 1.125rem;
+  --line-height-body-sm: 1.375rem;
+  --line-height-label-lg: 1.5rem;
+  --line-height-h6: 1.625rem;
+  --line-height-body-md: 1.75rem;
+  --line-height-h5: 1.875rem;
+  --line-height-body-lg: 2.125rem;
+  --line-height-h4: 2.25rem;
+  --line-height-h3: 2.5rem;
+  --line-height-h2: 3rem;
+  --line-height-overline: 3rem;
+  --line-height-h1: 3.625rem;
+  --line-height-display: 4.5rem;
+  /* Mobile */
+  /* number */
+  --font-size-caption: 0.75rem;
+  --font-size-label-md: 0.75rem;
+  --font-size-label-sm: 0.75rem;
+  --font-size-overline: 0.75rem;
+  --font-size-body-sm: 0.875rem;
+  --font-size-body-md: 1rem;
+  --font-size-label-lg: 1rem;
+  --font-size-body-lg: 1.125rem;
+  --font-size-h6: 1.125rem;
+  --font-size-h5: 1.25rem;
+  --font-size-h4: 1.5rem;
+  --font-size-h3: 1.75rem;
+  --font-size-h2: 2rem;
+  --font-size-h1: 2.25rem;
+  --font-size-display: 2.5rem;
+  --line-height-caption: 1rem;
+  --line-height-label-sm: 1rem;
+  --line-height-label-md: 1.125rem;
+  --line-height-body-sm: 1.375rem;
+  --line-height-label-lg: 1.5rem;
+  --line-height-h6: 1.625rem;
+  --line-height-body-md: 1.75rem;
+  --line-height-h5: 1.75rem;
+  --line-height-h4: 2rem;
+  --line-height-body-lg: 2.125rem;
+  --line-height-h3: 2.25rem;
+  --line-height-h2: 2.5rem;
+  --line-height-overline: 2.5rem;
+  --line-height-h1: 2.75rem;
+  --line-height-display: 3.25rem;
+}

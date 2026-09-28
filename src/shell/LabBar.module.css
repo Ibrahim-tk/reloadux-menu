@@ -1,0 +1,173 @@
+/* Prototype tooling — intentionally neutral and always dark so it never reads as part of the design. */
+
+.bar {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  height: var(--lab-bar-height);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding-inline: var(--spacing-md);
+  background: rgb(20 20 22 / 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  color: #e6e6e6;
+  font: 500 0.8125rem/1 var(--font-family-base);
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  min-width: 0;
+}
+
+.section:first-child {
+  flex: 0 1 auto;
+}
+
+.select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.select select {
+  appearance: none;
+  height: 2rem;
+  min-width: 13rem;
+  padding: 0 2rem 0 0.875rem;
+  border: 1px solid var(--color-purple-500);
+  border-radius: 999px;
+  background: var(--color-purple-500);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.select select:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.select option {
+  background: #1a1a1d;
+  color: #e6e6e6;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 0.75rem;
+  pointer-events: none;
+  color: #fff;
+}
+
+.position {
+  color: #9a9a9f;
+  font-variant-numeric: tabular-nums;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.bar button {
+  font: inherit;
+  color: inherit;
+}
+
+.icon,
+.toggle,
+.text,
+.stepper button {
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(255 255 255 / 0.04);
+  border-radius: 999px;
+  height: 2rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--duration-fast), border-color var(--duration-fast);
+}
+
+.toggle, .text { padding-inline: 0.75rem; }
+.icon { width: 2rem; font-size: 1.125rem; line-height: 1; }
+
+.icon:hover, .toggle:hover, .text:hover:not(:disabled), .stepper button:hover:not(:disabled) {
+  background: rgb(255 255 255 / 0.1);
+}
+
+.toggle[aria-pressed="true"] {
+  background: var(--color-purple-500);
+  border-color: var(--color-purple-500);
+  color: #fff;
+}
+
+.notes {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  color: #9a9a9f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stats {
+  color: #9a9a9f;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stepper button {
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+}
+
+.stepperValue {
+  min-width: 4.5rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.dim { color: #9a9a9f; }
+
+.bar button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.bar button:focus-visible {
+  outline: 2px solid var(--color-purple-500);
+  outline-offset: 2px;
+}
+
+.sep {
+  width: 1px;
+  height: 1.25rem;
+  background: rgb(255 255 255 / 0.12);
+}
+
+@media (max-width: 1200px) {
+  .notes, .stats { display: none; }
+}
+
+@media (max-width: 767px) {
+  .bar {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+}

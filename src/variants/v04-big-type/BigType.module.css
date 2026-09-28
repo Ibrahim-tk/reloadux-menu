@@ -1,0 +1,238 @@
+/* v04 · Big Type — Webflow-style: quiet labels, oversized links, promo banners, utility strip. */
+
+.panel {
+  --mm-link: var(--color-gray-200);
+  --mm-muted: var(--color-gray-400);
+  --bt-size: var(--font-size-h5);
+  --bt-leading: var(--line-height-h5);
+  --bt-gap: var(--spacing-8);
+
+  background: var(--color-surface-secondary);
+  border-block: 1px solid color-mix(in srgb, var(--color-divider) 30%, transparent);
+  max-height: var(--mm-max-height, 70dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.panel[data-density="compact"] {
+  --bt-size: var(--font-size-h6);
+  --bt-leading: var(--line-height-h6);
+  --bt-gap: var(--spacing-4);
+}
+
+.panel[data-density="dense"] {
+  --bt-size: var(--font-size-body-md);
+  --bt-leading: var(--line-height-body-sm);
+  --bt-gap: var(--spacing-2);
+}
+
+:global([data-theme="light"]) .panel {
+  --mm-link: var(--color-text-primary);
+  --mm-muted: var(--color-text-secondary);
+}
+
+.body {
+  max-width: 82.5rem;
+  margin-inline: auto;
+  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-xl);
+}
+
+/* ---------- Columns ---------- */
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--spacing-xl) var(--spacing-xl);
+}
+
+.column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--bt-gap);
+}
+
+.label {
+  margin: 0 0 var(--spacing-md);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--mm-muted);
+}
+
+.labelLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.labelLink:hover {
+  color: var(--color-text-primary);
+}
+
+.link {
+  font-size: var(--bt-size);
+  line-height: var(--bt-leading);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: -0.01em;
+  color: var(--mm-link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+/* Category labels are pages too — the ↗ says so. Underline only the words, not the arrow. */
+.linkText {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 0.3em;
+  vertical-align: -0.05em;
+  width: 0.75em;
+  height: 0.75em;
+  transition: translate var(--duration-base) var(--ease-out);
+}
+
+.labelLink:hover .linkText {
+  text-decoration-color: currentColor;
+}
+
+.labelLink:hover .arrow,
+.labelLink:focus-visible .arrow {
+  translate: 0.12em -0.12em;
+}
+
+.link:focus-visible,
+.promo:focus-visible,
+.utilityCta:focus-visible,
+.labelLink:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Promo banners ---------- */
+
+.promos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+}
+
+.promo {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: var(--spacing-4);
+  min-height: 7.5rem;
+  padding: var(--spacing-lg) var(--spacing-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-white);
+  background:
+    radial-gradient(60% 140% at 85% 20%, var(--color-purple-500), transparent 70%),
+    radial-gradient(40% 90% at 60% 110%, var(--color-accent-highlight), transparent 70%),
+    var(--color-gray-800);
+}
+
+.promo[data-tone="1"] {
+  background:
+    radial-gradient(55% 140% at 100% 50%, var(--color-accent-highlight), transparent 70%),
+    linear-gradient(100deg, var(--color-black) 35%, var(--color-gray-700));
+}
+
+.promoTitle {
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+}
+
+.promoBody {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-gray-200);
+}
+
+.promoArrow {
+  position: absolute;
+  right: var(--spacing-lg);
+  top: 50%;
+  translate: 0 -50%;
+  font-size: var(--font-size-h5);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out), translate var(--duration-base) var(--ease-out);
+}
+
+.promo:hover .promoArrow {
+  opacity: 1;
+  translate: 0.25rem -50%;
+}
+
+.promo:hover .promoTitle {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+/* ---------- Utility strip ---------- */
+
+.utility {
+  background: var(--color-surface-primary);
+  border-top: 1px solid var(--color-divider);
+}
+
+.utilityInner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  max-width: 82.5rem;
+  margin-inline: auto;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-body-sm);
+}
+
+.utilityLabel {
+  color: var(--mm-muted);
+}
+
+.utilityCta {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+
+.utilityCount {
+  margin-left: auto;
+  color: var(--mm-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 767px) {
+  .utilityInner {
+    flex-wrap: wrap;
+  }
+  .utilityCount {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}

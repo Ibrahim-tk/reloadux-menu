@@ -1,0 +1,502 @@
+{
+  "$comment": "Single source of truth for all nav copy. Variants read from here; the Lab bar appends items from stressPool to test scale.",
+  "brand": {
+    "name": "reloadux",
+    "href": "/"
+  },
+  "topNav": [
+    {
+      "id": "work",
+      "label": "work",
+      "href": "/work"
+    },
+    {
+      "id": "services",
+      "label": "services",
+      "href": "/services",
+      "megaMenu": "services"
+    },
+    {
+      "id": "about",
+      "label": "about us",
+      "href": "/about"
+    },
+    {
+      "id": "blog",
+      "label": "blog",
+      "href": "/blog"
+    }
+  ],
+  "cta": {
+    "label": "Let’s Talk.",
+    "href": "/contact"
+  },
+  "megaMenus": {
+    "services": {
+      "groups": [
+        {
+          "id": "ai-native-product-design",
+          "title": "AI Native Product Design",
+          "href": "/services/ai-native-product-design",
+          "links": [
+            {
+              "label": "Design Discovery",
+              "href": "/services/ai-native-product-design/design-discovery"
+            },
+            {
+              "label": "AI Design System Build",
+              "href": "/services/ai-native-product-design/ai-design-system-build"
+            },
+            {
+              "label": "Conversational AI Design",
+              "href": "/services/ai-native-product-design/conversational-ai-design"
+            },
+            {
+              "label": "AI Trust & Explainability Design",
+              "href": "/services/ai-native-product-design/ai-trust-and-explainability-design"
+            },
+            {
+              "label": "Feature Adoption UX",
+              "href": "/services/ai-native-product-design/feature-adoption-ux"
+            },
+            {
+              "label": "AI Opportunity Mapping",
+              "href": "/services/ai-native-product-design/ai-opportunity-mapping"
+            },
+            {
+              "label": "AI Native Product Design",
+              "href": "/services/ai-native-product-design/ai-native-product-design"
+            },
+            {
+              "label": "Agentic UX Design",
+              "href": "/services/ai-native-product-design/agentic-ux-design"
+            },
+            {
+              "label": "MVP Sprint and Handoff",
+              "href": "/services/ai-native-product-design/mvp-sprint-and-handoff"
+            }
+          ]
+        },
+        {
+          "id": "ux-redesign",
+          "title": "UX Redesign",
+          "href": "/services/ux-redesign",
+          "links": [
+            {
+              "label": "UX Audit & AI Readiness",
+              "href": "/services/ux-redesign/ux-audit-and-ai-readiness"
+            },
+            {
+              "label": "Legacy UX Modernization",
+              "href": "/services/ux-redesign/legacy-ux-modernization"
+            },
+            {
+              "label": "AI Trust & Explainability Design",
+              "href": "/services/ux-redesign/ai-trust-and-explainability-design"
+            },
+            {
+              "label": "Feature Adoption UX",
+              "href": "/services/ux-redesign/feature-adoption-ux"
+            },
+            {
+              "label": "AI Opportunity Mapping",
+              "href": "/services/ux-redesign/ai-opportunity-mapping"
+            },
+            {
+              "label": "AI Feature Experience Design",
+              "href": "/services/ux-redesign/ai-feature-experience-design"
+            },
+            {
+              "label": "Design System for Existing Products",
+              "href": "/services/ux-redesign/design-system-for-existing-products"
+            }
+          ]
+        }
+      ],
+      "aside": [
+        {
+          "id": "industries",
+          "title": "Industries",
+          "href": "/industries",
+          "links": [
+            {
+              "label": "SaaS",
+              "href": "/industries/saas"
+            },
+            {
+              "label": "Healthcare",
+              "href": "/industries/healthcare"
+            },
+            {
+              "label": "Fintech",
+              "href": "/industries/fintech"
+            },
+            {
+              "label": "Web 3",
+              "href": "/industries/web-3"
+            }
+          ]
+        },
+        {
+          "id": "other",
+          "title": "Other",
+          "href": "/services/other",
+          "links": [
+            {
+              "label": "Marketing and Creatives",
+              "href": "/services/marketing-and-creatives"
+            },
+            {
+              "label": "AI Native Design Team",
+              "href": "/services/ai-native-design-team"
+            }
+          ]
+        }
+      ],
+      "featured": {
+        "eyebrow": "Featured service",
+        "title": "UX Audit & AI Readiness",
+        "description": "A two-week audit that maps where AI fits your product and what to fix first.",
+        "cta": {
+          "label": "Book an audit",
+          "href": "/services/ux-redesign/ux-audit-and-ai-readiness"
+        }
+      },
+      "viewAll": {
+        "label": "All services",
+        "href": "/services"
+      },
+      "solutions": [
+        {
+          "title": "AI Product Sprint",
+          "subtitle": "For startups shipping AI",
+          "description": "Go from idea to a validated AI product in 6 weeks.",
+          "href": "/solutions/ai-product-sprint",
+          "glyph": "sprint"
+        },
+        {
+          "title": "UX Redesign",
+          "subtitle": "For SaaS scale-ups",
+          "description": "A modern, faster product without pausing your roadmap.",
+          "href": "/solutions/ux-redesign",
+          "glyph": "redesign"
+        },
+        {
+          "title": "Design Team Extension",
+          "subtitle": "For in-house product teams",
+          "description": "Senior designers who plug into your sprints in a week.",
+          "href": "/solutions/design-team-extension",
+          "glyph": "team"
+        }
+      ],
+      "promos": [
+        {
+          "title": "Services overview",
+          "description": "Every way we help teams ship better products",
+          "href": "/services"
+        },
+        {
+          "title": "AI-native design",
+          "description": "How we design products around AI from day one",
+          "href": "/ai-native-design"
+        }
+      ],
+      "utility": {
+        "label": "Not sure where to start?",
+        "cta": {
+          "label": "Book a 20-min call",
+          "href": "/contact"
+        }
+      },
+      "announcement": {
+        "tag": "New",
+        "title": "AI Readiness Audit",
+        "description": "See where AI can make the biggest impact in your product",
+        "href": "/services/ux-redesign/ux-audit-and-ai-readiness"
+      },
+      "statement": "We design AI-native products and redesign the ones already in market, so people actually adopt what you ship.",
+      "articles": [
+        {
+          "label": "A Practical Guide for C-Level Leaders",
+          "kicker": "Navigating AI Governance & Risk",
+          "type": "Whitepaper",
+          "topic": "Artificial Intelligence",
+          "href": "/resources/ai-governance-guide"
+        },
+        {
+          "label": "9 Patterns That Actually Work",
+          "kicker": "Designing Trust into AI Features",
+          "type": "Article",
+          "topic": "AI Design",
+          "href": "/blog/designing-trust-into-ai-features"
+        },
+        {
+          "label": "Modernise Without Losing Power Users",
+          "kicker": "Legacy SaaS Redesign",
+          "type": "Case Study",
+          "topic": "SaaS",
+          "href": "/work/legacy-saas-redesign"
+        }
+      ]
+    }
+  },
+  "stressPool": {
+    "$comment": "Realistic extra copy used only by the Lab bar's +Links / +Groups / +Aside controls.",
+    "links": [
+      "User Research & Testing",
+      "Usability Benchmarking",
+      "Information Architecture",
+      "Interaction Design",
+      "Prototyping & Validation",
+      "Accessibility (WCAG) Audit",
+      "Design Ops Setup",
+      "Mobile App UX",
+      "Dashboard & Data Viz Design",
+      "Onboarding Optimization",
+      "Conversion Rate UX",
+      "Enterprise UX Consulting",
+      "Voice UI Design",
+      "Micro-interaction Design",
+      "Design QA",
+      "Content Design & UX Writing"
+    ],
+    "groups": [
+      {
+        "id": "product-strategy",
+        "title": "Product Strategy",
+        "href": "/services/product-strategy",
+        "links": [
+          {
+            "label": "Product Discovery Workshops",
+            "href": "/services/product-strategy/product-discovery-workshops"
+          },
+          {
+            "label": "Roadmap Prioritization",
+            "href": "/services/product-strategy/roadmap-prioritization"
+          },
+          {
+            "label": "Jobs-to-be-Done Research",
+            "href": "/services/product-strategy/jobs-to-be-done-research"
+          },
+          {
+            "label": "Competitive UX Analysis",
+            "href": "/services/product-strategy/competitive-ux-analysis"
+          },
+          {
+            "label": "Pricing Page UX",
+            "href": "/services/product-strategy/pricing-page-ux"
+          }
+        ]
+      },
+      {
+        "id": "design-systems",
+        "title": "Design Systems",
+        "href": "/services/design-systems",
+        "links": [
+          {
+            "label": "Design System Audit",
+            "href": "/services/design-systems/design-system-audit"
+          },
+          {
+            "label": "Component Library Build",
+            "href": "/services/design-systems/component-library-build"
+          },
+          {
+            "label": "Token Architecture",
+            "href": "/services/design-systems/token-architecture"
+          },
+          {
+            "label": "Figma to Code Handoff",
+            "href": "/services/design-systems/figma-to-code-handoff"
+          },
+          {
+            "label": "Design System Governance",
+            "href": "/services/design-systems/design-system-governance"
+          },
+          {
+            "label": "Multi-brand Theming",
+            "href": "/services/design-systems/multi-brand-theming"
+          }
+        ]
+      },
+      {
+        "id": "web-and-brand",
+        "title": "Web & Brand",
+        "href": "/services/web-and-brand",
+        "links": [
+          {
+            "label": "Marketing Website Design",
+            "href": "/services/web-and-brand/marketing-website-design"
+          },
+          {
+            "label": "Brand Identity",
+            "href": "/services/web-and-brand/brand-identity"
+          },
+          {
+            "label": "Landing Page Design",
+            "href": "/services/web-and-brand/landing-page-design"
+          },
+          {
+            "label": "Webflow Development",
+            "href": "/services/web-and-brand/webflow-development"
+          },
+          {
+            "label": "Motion & Illustration",
+            "href": "/services/web-and-brand/motion-and-illustration"
+          }
+        ]
+      },
+      {
+        "id": "research",
+        "title": "Research",
+        "href": "/services/research",
+        "links": [
+          {
+            "label": "User Interviews",
+            "href": "/services/research/user-interviews"
+          },
+          {
+            "label": "Usability Testing",
+            "href": "/services/research/usability-testing"
+          },
+          {
+            "label": "Analytics & Heatmaps",
+            "href": "/services/research/analytics-and-heatmaps"
+          },
+          {
+            "label": "Persona Development",
+            "href": "/services/research/persona-development"
+          },
+          {
+            "label": "Journey Mapping",
+            "href": "/services/research/journey-mapping"
+          },
+          {
+            "label": "Diary Studies",
+            "href": "/services/research/diary-studies"
+          }
+        ]
+      }
+    ],
+    "aside": [
+      {
+        "id": "engagement",
+        "title": "Engagement Models",
+        "href": "/engagement",
+        "links": [
+          {
+            "label": "Dedicated Design Team",
+            "href": "/engagement/dedicated-design-team"
+          },
+          {
+            "label": "Fixed-scope Project",
+            "href": "/engagement/fixed-scope-project"
+          },
+          {
+            "label": "Design Retainer",
+            "href": "/engagement/design-retainer"
+          },
+          {
+            "label": "Staff Augmentation",
+            "href": "/engagement/staff-augmentation"
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "href": "/resources",
+        "links": [
+          {
+            "label": "Case Studies",
+            "href": "/resources/case-studies"
+          },
+          {
+            "label": "UX Playbooks",
+            "href": "/resources/ux-playbooks"
+          },
+          {
+            "label": "AI Design Guide",
+            "href": "/resources/ai-design-guide"
+          }
+        ]
+      }
+    ]
+  },
+  "descriptions": {
+    "Design Discovery": "Find the right problem before pixels",
+    "AI Design System Build": "Components ready for AI features",
+    "Conversational AI Design": "Chat and voice flows that feel human",
+    "AI Trust & Explainability Design": "Make model output understandable",
+    "Feature Adoption UX": "Get users to the value, faster",
+    "AI Opportunity Mapping": "Where AI actually helps your users",
+    "AI Native Product Design": "Products built around AI from day one",
+    "Agentic UX Design": "Interfaces for agents that act",
+    "MVP Sprint and Handoff": "Validated MVP, dev-ready files",
+    "UX Audit & AI Readiness": "What to fix, and where AI fits",
+    "Legacy UX Modernization": "Modern UX without a rewrite",
+    "AI Feature Experience Design": "Ship AI features people trust",
+    "Design System for Existing Products": "Consistency across a mature product",
+    "SaaS": "B2B platforms, dashboards, CRMs",
+    "Healthcare": "Patient, clinical and compliance UX",
+    "Fintech": "Banking, payments, trading",
+    "Web 3": "Wallets, DeFi, onboarding",
+    "Marketing and Creatives": "Brand, web and campaign design",
+    "AI Native Design Team": "Designers fluent in AI products",
+    "User Research & Testing": "Evidence behind every decision",
+    "Usability Benchmarking": "Measure UX against competitors",
+    "Information Architecture": "Structure that scales with content",
+    "Interaction Design": "Behaviour, states and flow",
+    "Prototyping & Validation": "Test ideas before you build",
+    "Accessibility (WCAG) Audit": "Meet WCAG 2.2 AA with confidence",
+    "Design Ops Setup": "Process and tooling for design teams",
+    "Mobile App UX": "iOS and Android that feel native",
+    "Dashboard & Data Viz Design": "Dense data, clear decisions",
+    "Onboarding Optimization": "First-run flows that activate",
+    "Conversion Rate UX": "Fewer drop-offs, more sign-ups",
+    "Enterprise UX Consulting": "Complex workflows, simplified",
+    "Voice UI Design": "Hands-free, speech-first flows",
+    "Micro-interaction Design": "Details that make it feel alive",
+    "Design QA": "Pixel-accurate builds, every release",
+    "Content Design & UX Writing": "Words that guide and convert",
+    "Product Discovery Workshops": "Align stakeholders in days",
+    "Roadmap Prioritization": "Decide what to build next",
+    "Jobs-to-be-Done Research": "Why customers really hire you",
+    "Competitive UX Analysis": "See where rivals fall short",
+    "Pricing Page UX": "Plans that are easy to choose",
+    "Design System Audit": "Find gaps and drift",
+    "Component Library Build": "Coded, documented components",
+    "Token Architecture": "Themeable, multi-brand tokens",
+    "Figma to Code Handoff": "Specs devs can ship from",
+    "Design System Governance": "Keep it healthy as it grows",
+    "Multi-brand Theming": "One system, many brands",
+    "Marketing Website Design": "Sites that sell the product",
+    "Brand Identity": "Name, logo, voice and visuals",
+    "Landing Page Design": "Pages built to convert",
+    "Webflow Development": "Launch fast, edit without devs",
+    "Motion & Illustration": "Visual storytelling",
+    "User Interviews": "Talk to the people who matter",
+    "Usability Testing": "Watch real users, fix real issues",
+    "Analytics & Heatmaps": "Behaviour data, interpreted",
+    "Persona Development": "Who you design for",
+    "Journey Mapping": "End-to-end experience, visualised",
+    "Diary Studies": "Behaviour over time",
+    "Dedicated Design Team": "Your embedded product squad",
+    "Fixed-scope Project": "Clear deliverables, fixed price",
+    "Design Retainer": "Ongoing design, monthly",
+    "Staff Augmentation": "Senior designers, on demand",
+    "Case Studies": "Work we're proud of",
+    "UX Playbooks": "Free guides from our team",
+    "AI Design Guide": "Patterns for AI interfaces",
+    "UX Redesign": "Modernise products already in market",
+    "Product Strategy": "Decide what to build and why",
+    "Design Systems": "Scale design across teams",
+    "Web & Brand": "How the world sees you",
+    "Research": "Evidence from real users",
+    "Industries": "Domains we know deeply",
+    "Other": "Beyond product design",
+    "Engagement Models": "Ways to work with us",
+    "Resources": "Learn from our work"
+  },
+  "descriptions_$comment": "Optional one-liners keyed by link label; variants that show descriptions look them up here."
+}

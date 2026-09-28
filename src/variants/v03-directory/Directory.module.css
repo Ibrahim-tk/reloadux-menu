@@ -1,0 +1,153 @@
+/* v03 · Directory — everything visible at once, newspaper columns + chip strip. */
+
+.panel {
+  --mm-link: var(--color-gray-200);
+  --mm-muted: var(--color-gray-400);
+
+  background: var(--color-surface-secondary);
+  border-block: 1px solid color-mix(in srgb, var(--color-divider) 30%, transparent);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  max-height: var(--mm-max-height, 70dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+:global([data-theme="light"]) .panel {
+  --mm-link: var(--color-text-secondary);
+  --mm-muted: var(--color-text-tertiary);
+}
+
+.inner {
+  max-width: 82.5rem;
+  margin-inline: auto;
+}
+
+/* ---------- Columns ---------- */
+
+.columns {
+  columns: 15rem auto;
+  column-gap: var(--spacing-xl);
+  column-rule: 1px solid color-mix(in srgb, var(--color-divider) 50%, transparent);
+}
+
+.block {
+  break-inside: avoid;
+  padding-bottom: var(--spacing-lg);
+}
+
+.block ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.blockTitle {
+  margin: 0 0 var(--spacing-4);
+  padding: var(--spacing-8);
+  font-size: var(--font-size-body-sm);
+  line-height: normal;
+  font-weight: var(--font-weight-semibold);
+}
+
+.blockTitle a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.blockTitle a:hover {
+  text-decoration-color: currentColor;
+}
+
+.link {
+  display: block;
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--mm-link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+.link:focus-visible,
+.chip:focus-visible,
+.blockTitle a:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: -2px;
+}
+
+/* ---------- Aside strip ---------- */
+
+.strip {
+  display: grid;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-divider);
+}
+
+.stripRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.stripTitle {
+  flex: 0 0 10rem;
+  margin: 0;
+  font-size: var(--font-size-label-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--mm-muted);
+  opacity: 0.8;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 2.25rem;
+  padding-inline: var(--spacing-md);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-label-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--mm-link);
+  text-decoration: none;
+  transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.chip:hover {
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 767px) {
+  .stripRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  .stripTitle {
+    flex-basis: auto;
+  }
+}

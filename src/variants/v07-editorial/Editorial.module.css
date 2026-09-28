@@ -1,0 +1,270 @@
+/* v07 · Editorial — Lazarev-style: eyebrow-labelled described links, whitepaper-cover article rail. */
+
+.panel {
+  --mm-link: var(--color-text-primary);
+  --mm-muted: var(--color-gray-400);
+  /* Same side gutter as the header bar, so content lines up with the logo and CTA. */
+  --ed-gutter: 3.75rem;
+}
+
+:global([data-theme="light"]) .panel {
+  --mm-muted: var(--color-text-secondary);
+}
+
+/* Full-bleed: spans the header's width, no floating container. */
+.card {
+  overflow: hidden;
+  background: var(--color-surface-secondary);
+  border-block: 1px solid color-mix(in srgb, var(--color-divider) 30%, transparent);
+}
+
+.layout {
+  --ed-height: calc(var(--mm-max-height, 70dvh) - 2px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 22rem;
+  max-height: var(--ed-height);
+}
+
+.main,
+.articles {
+  min-height: 0;
+  max-height: var(--ed-height);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--spacing-xl);
+}
+
+.main {
+  padding-left: var(--ed-gutter);
+}
+
+.articles {
+  padding-right: var(--ed-gutter);
+  border-left: 1px solid var(--color-border-subtle);
+}
+
+/* Shared underline hover */
+.itemTitle,
+.eyebrow a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.item:hover .itemTitle,
+.eyebrow a:hover {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+.panel a:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Described link columns ---------- */
+
+.columns {
+  columns: 13.5rem 3;
+  column-gap: var(--spacing-xl);
+}
+
+.block {
+  break-inside: avoid;
+  padding-bottom: var(--spacing-xl);
+}
+
+.block ul {
+  display: grid;
+  gap: var(--spacing-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.columns[data-desc] .block ul {
+  gap: var(--spacing-md);
+}
+
+.eyebrow {
+  margin: 0 0 var(--spacing-12);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mm-muted);
+}
+
+.eyebrow a {
+  color: inherit;
+}
+
+.item {
+  display: grid;
+  gap: var(--spacing-2);
+  text-decoration: none;
+}
+
+.itemTitle {
+  font-size: var(--font-size-body-sm); /* 16px */
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--mm-link);
+}
+
+.itemDesc {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  color: var(--mm-muted);
+}
+
+/* ---------- Article rail: whitepaper-cover cards ---------- */
+
+.articlesTitle {
+  margin: 0 0 var(--spacing-md);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--mm-muted);
+}
+
+.articles ul {
+  display: grid;
+  gap: var(--spacing-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.article {
+  display: grid;
+  gap: var(--spacing-12);
+  text-decoration: none;
+  container-type: inline-size;
+}
+
+/* Glow backdrop image; the cover sheet rises from the bottom and is cropped by it. */
+.cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  /* 800×450 purple glow, same 16:9 ratio as the card. Purple fallback while it loads. */
+  background: var(--color-purple-500) url("../../assets/article-cover-bg.png") center / cover no-repeat;
+}
+
+.sheet {
+  position: absolute;
+  left: 14%;
+  right: 17%;
+  top: 14.5%;
+  bottom: -12%;
+  display: flex;
+  flex-direction: column;
+  padding: 5cqi 5cqi;
+  background: var(--color-black);
+  color: var(--color-white);
+  /* page edges peeking out behind the cover */
+  box-shadow:
+    1.5cqi 1.5cqi 0 0 var(--color-white),
+    2.5cqi 2.5cqi 0 0 color-mix(in srgb, var(--color-purple-500) 25%, var(--color-white));
+  transition: translate var(--duration-base) var(--ease-out);
+}
+
+.article:hover .sheet {
+  translate: 0 -2.5cqi;
+}
+
+.coverLogo {
+  position: relative;
+  display: block;
+  width: 7.5rem;
+  height: 1.6875rem;
+  scale: 0.55;
+  transform-origin: left top;
+  margin-bottom: auto;
+}
+
+.kicker {
+  margin-top: 4cqi;
+  font-size: 3.4cqi;
+  line-height: 1.3;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray-200);
+}
+
+.coverTitle {
+  margin-top: 2cqi;
+  font-size: 6.4cqi;
+  line-height: 1.08;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+  padding-bottom: 14cqi; /* keep the title clear of the cropped bottom edge */
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  color: var(--mm-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.meta > span:not(.dot) {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.article:hover .meta {
+  color: var(--color-text-primary);
+}
+
+.article:hover .meta > span:not(.dot) {
+  text-decoration-color: currentColor;
+}
+
+.dot {
+  font-size: 0.625rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1200px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+    max-height: none;
+    overflow-y: auto;
+  }
+  .main,
+  .articles {
+    max-height: none;
+    overflow: visible;
+  }
+  .articles {
+    border-left: 0;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+  .articles ul {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+}
+
+@media (max-width: 1023px) {
+  .panel {
+    --ed-gutter: var(--spacing-lg); /* header drops to 24px here too */
+  }
+}

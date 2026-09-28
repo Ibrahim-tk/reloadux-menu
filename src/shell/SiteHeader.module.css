@@ -1,0 +1,165 @@
+/* Header — Figma node 15163:14760 */
+
+.root {
+  position: sticky;
+  top: var(--lab-bar-height, 0px); /* sits under the Lab bar */
+  z-index: 50;
+  /* Radix wraps the list in a div; keep it from affecting layout. */
+}
+
+.root > div:has(> .list) {
+  display: contents;
+}
+
+.bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-20) 3.75rem; /* 20 / 60 */
+  background: var(--color-surface-secondary);
+}
+
+.list {
+  display: flex;
+  align-items: flex-start;
+  gap: 3.5rem; /* 56 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tab {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: var(--color-text-secondary);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 4px;
+}
+
+.chevron {
+  display: block;
+  transition: rotate var(--duration-base) var(--ease-out);
+}
+
+[data-theme="light"] .chevron {
+  filter: invert(1);
+}
+
+.tab[data-state="open"] .chevron {
+  rotate: 180deg;
+}
+
+.cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12) var(--spacing-24);
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: normal;
+  text-decoration: none;
+  border-radius: var(--radius-0);
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover {
+  opacity: 0.88;
+}
+
+/* ---------- Mega menu viewport ---------- */
+
+.viewportWrap {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.viewport {
+  width: 100%;
+  height: var(--radix-navigation-menu-viewport-height);
+  overflow: clip;
+  transition: height var(--duration-base) var(--ease-out);
+  /* Hard cap for every variant: 75% of the viewport, or the room left below
+     the header on short screens. Variants scroll inside this. */
+  --mm-max-height: min(75dvh, calc(100dvh - 5.375rem - var(--lab-bar-height, 0px) - var(--spacing-lg)));
+}
+
+.viewport[data-state="open"] {
+  animation: reveal var(--duration-base) var(--ease-out);
+}
+
+.viewport[data-state="closed"] {
+  animation: hide var(--duration-fast) ease-in forwards;
+}
+
+@keyframes reveal {
+  from { opacity: 0; translate: 0 -0.5rem; }
+}
+
+@keyframes hide {
+  to { opacity: 0; }
+}
+
+.content {
+  width: 100%;
+}
+
+/* Blurred page scrim — Figma node 15974:67422 */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: rgb(0 0 0 / 0.3);
+  backdrop-filter: blur(27px);
+  -webkit-backdrop-filter: blur(27px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.root[data-open] .scrim {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .bar {
+    padding-inline: var(--spacing-lg);
+  }
+  .list {
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 599px) {
+  .cta {
+    display: none;
+  }
+  .list {
+    gap: var(--spacing-md);
+  }
+}

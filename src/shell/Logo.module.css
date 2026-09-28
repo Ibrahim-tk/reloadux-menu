@@ -1,0 +1,32 @@
+.logo {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 7.5rem; /* 120 */
+  height: 1.6875rem; /* 27 */
+  overflow: clip;
+}
+
+[data-theme="light"] .logo img {
+  filter: invert(1);
+}
+
+.mark {
+  position: absolute;
+  top: 5.56%;
+  left: calc(50% + 0.46px);
+  translate: -50% 0;
+  width: 120.926px;
+  height: 24px;
+  opacity: 0.9;
+}
+
+.mark img {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+
+.reload { left: 0; top: 0; }
+.u1 { left: 87.6px; top: 5.7px; }
+.u2 { left: 103.46px; top: 5.5px; }

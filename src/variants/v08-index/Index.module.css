@@ -1,0 +1,179 @@
+/* v08 · Index — serif category index; hovering dims siblings and swaps the link preview. */
+
+.panel {
+  --mm-link: var(--color-gray-200);
+  --mm-muted: var(--color-gray-400);
+
+  background: var(--color-surface-secondary);
+  border-block: 1px solid color-mix(in srgb, var(--color-divider) 30%, transparent);
+  padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+:global([data-theme="light"]) .panel {
+  --mm-link: var(--color-text-primary);
+  --mm-muted: var(--color-text-secondary);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: var(--spacing-3xl);
+  max-width: 82.5rem;
+  margin-inline: auto;
+  max-height: calc(var(--mm-max-height, 70dvh) - 2 * var(--spacing-xl) - 2px);
+}
+
+/* ---------- Index ---------- */
+
+.index {
+  --row-size: var(--font-size-h3);
+  --row-leading: var(--line-height-h3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid var(--color-divider);
+}
+
+.index[data-size="md"] {
+  --row-size: var(--font-size-h4);
+  --row-leading: var(--line-height-h4);
+}
+
+.index[data-size="sm"] {
+  --row-size: var(--font-size-h5);
+  --row-leading: var(--line-height-h5);
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-2xl) var(--spacing-md) var(--spacing-8); /* right room for the hover arrow */
+  border-bottom: 1px solid var(--color-divider);
+  text-decoration: none;
+  color: var(--color-text-primary);
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+/* Dim every row except the one under the pointer / previewed. */
+.index:hover .row:not(:hover) {
+  opacity: 0.3;
+}
+
+.index:not(:hover) .row:not([data-active]) {
+  opacity: 0.55;
+}
+
+.title {
+  font-family: var(--font-family-serif);
+  font-size: var(--row-size);
+  line-height: var(--row-leading);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: translate var(--duration-base) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.row:hover .title {
+  translate: var(--spacing-12) 0;
+  text-decoration-color: currentColor;
+}
+
+.arrow {
+  position: absolute;
+  right: var(--spacing-8);
+  top: 50%;
+  translate: -0.5rem -50%;
+  font-size: var(--font-size-h5);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out), translate var(--duration-base) var(--ease-out);
+}
+
+.row:hover .arrow,
+.row:focus-visible .arrow {
+  opacity: 1;
+  translate: 0 -50%;
+}
+
+.row:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: -2px;
+  opacity: 1 !important;
+}
+
+/* ---------- Preview ---------- */
+
+.preview {
+  min-width: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.pane {
+  display: none;
+}
+
+.pane[data-active] {
+  display: block;
+  animation: in var(--duration-base) var(--ease-out);
+}
+
+@keyframes in {
+  from { opacity: 0; translate: 0 0.5rem; }
+}
+
+.desc {
+  margin: 0 0 var(--spacing-md);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-text-primary);
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: var(--spacing-lg);
+}
+
+.links li {
+  break-inside: avoid;
+}
+
+.link {
+  display: block;
+  padding: var(--spacing-8) 0;
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  color: var(--mm-link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1023px) {
+  .inner {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+}

@@ -1,0 +1,303 @@
+/* v06 · Tree Panels — Glean-style: framed tray of cards, tree-connected sub-lists, announcement strip. */
+
+.panel {
+  --mm-link: var(--color-gray-200);
+  --mm-muted: var(--color-gray-400);
+  --mm-line: var(--color-border-default);
+  --tp-height: calc(var(--mm-max-height, 70dvh) - var(--spacing-12) - 2 * var(--spacing-8) - 2px); /* 2px = frame borders */
+
+  padding: var(--spacing-12) var(--spacing-lg) 0;
+}
+
+:global([data-theme="light"]) .panel {
+  --mm-link: var(--color-text-primary);
+  --mm-muted: var(--color-text-secondary);
+}
+
+.frame {
+  display: grid;
+  grid-template-columns: 22rem minmax(0, 1fr);
+  gap: var(--spacing-8);
+  max-width: 87rem;
+  margin-inline: auto;
+  padding: var(--spacing-8);
+  background: var(--color-surface-primary);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.5);
+}
+
+.card,
+.cardMain {
+  max-height: var(--tp-height);
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.card {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--spacing-8);
+}
+
+.cardMain {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.label {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+a:hover > .label,
+a:hover .groupTitle,
+a:hover .announceText > .label {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+.panel a:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Left card ---------- */
+
+.promo {
+  display: grid;
+  align-content: center;
+  gap: var(--spacing-4);
+  min-height: 6.5rem;
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--color-white);
+  text-decoration: none;
+  background:
+    radial-gradient(70% 120% at 100% 30%, var(--color-purple-500), transparent 70%),
+    radial-gradient(50% 80% at 70% 120%, var(--color-accent-highlight), transparent 70%),
+    var(--color-gray-700);
+}
+
+.promoTitle {
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+  font-weight: var(--font-weight-semibold);
+}
+
+.promo:hover .promoTitle {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.promoBody {
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  color: var(--color-gray-200);
+}
+
+.caption {
+  margin: var(--spacing-md) var(--spacing-8) var(--spacing-8);
+  padding-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--mm-line);
+  font-size: var(--font-size-label-md);
+  color: var(--mm-muted);
+}
+
+.trees,
+.treeChildren,
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trees {
+  display: grid;
+  gap: var(--spacing-8);
+  padding: 0 var(--spacing-8) var(--spacing-8);
+}
+
+.treeParent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  padding-block: var(--spacing-8);
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.treeParent svg {
+  color: var(--mm-muted);
+}
+
+/* Connector: vertical spine from the parent icon, elbow into each child. */
+.treeChildren {
+  margin-left: 0.4375rem; /* centre of the 16px parent icon */
+}
+
+.treeChildren li {
+  position: relative;
+  padding-left: var(--spacing-lg);
+}
+
+.treeChildren li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--spacing-12);
+  height: 50%;
+  border-left: 1px solid var(--mm-line);
+  border-bottom: 1px solid var(--mm-line);
+  border-bottom-left-radius: 0.25rem;
+}
+
+.treeChildren li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  bottom: 0;
+  border-left: 1px solid var(--mm-line);
+}
+
+.treeLink {
+  display: block;
+  padding-block: var(--spacing-8);
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  color: var(--mm-link);
+  text-decoration: none;
+}
+
+/* ---------- Right card ---------- */
+
+.groupsScroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--spacing-lg);
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: var(--spacing-xl) var(--spacing-xl);
+}
+
+.groupHead {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-12);
+  border-bottom: 1px solid var(--mm-line);
+  text-decoration: none;
+}
+
+.groupIcon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+}
+
+.groupText {
+  display: grid;
+  min-width: 0;
+}
+
+.groupTitle {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-label-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.groupDesc {
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  color: var(--mm-muted);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  padding: var(--spacing-8) 0;
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  color: var(--mm-link);
+  text-decoration: none;
+}
+
+.link svg {
+  flex-shrink: 0;
+  color: var(--mm-muted);
+}
+
+/* ---------- Announcement strip ---------- */
+
+.announce {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-12) var(--spacing-lg);
+  background: var(--color-surface-primary);
+  border-top: 1px solid var(--color-border-subtle);
+  text-decoration: none;
+}
+
+.tag {
+  padding: var(--spacing-4) var(--spacing-12);
+  background: var(--color-gray-700);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.announceText {
+  display: grid;
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  color: var(--color-text-primary);
+}
+
+.announceDesc {
+  color: var(--mm-muted);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1100px) {
+  .frame {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    order: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .panel {
+    padding-inline: 0;
+  }
+}

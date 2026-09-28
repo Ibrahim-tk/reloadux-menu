@@ -1,0 +1,184 @@
+/* v01 · Classic Grid — Figma node 16315:55406 */
+
+.panel {
+  /* Figma uses gray-200 for links on black; light mode falls back to semantics. */
+  --mm-link: var(--color-gray-200);
+  --mm-link-hover: var(--color-text-primary);
+  --mm-title: var(--color-gray-200);
+  --mm-aside-title: var(--color-gray-400);
+  --mm-aside-bg: var(--color-surface-primary);
+  --mm-rule: var(--color-divider);
+
+  background: var(--color-surface-secondary);
+  border-block: 1px solid color-mix(in srgb, var(--color-divider) 30%, transparent);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  /* Keeps SEO-sized menus usable: scroll inside instead of off-screen. */
+  max-height: var(--mm-max-height, 70dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+:global([data-theme="light"]) .panel {
+  --mm-link: var(--color-text-secondary);
+  --mm-title: var(--color-text-secondary);
+  --mm-aside-title: var(--color-text-tertiary);
+}
+
+.inner {
+  display: flex;
+  gap: var(--spacing-lg);
+  max-width: 82.5rem; /* 1320 */
+  margin-inline: auto;
+}
+
+/* ---------- Main: category rows ---------- */
+
+.main {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.group {
+  display: grid;
+  grid-template-columns: 18.75rem 1fr; /* 300 title column */
+  gap: var(--spacing-lg);
+  padding-block: var(--spacing-12) 0;
+}
+
+.group:first-child {
+  padding-top: 0;
+}
+
+.group + .group {
+  border-top: 1px solid var(--mm-rule);
+  margin-top: var(--spacing-12);
+}
+
+.groupTitle {
+  margin: 0;
+  width: 16.5625rem; /* 265 */
+  max-width: 100%;
+  padding: var(--spacing-12);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: normal;
+  color: var(--mm-title);
+  opacity: 0.6;
+}
+
+.groupTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.groupTitle a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.columns {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: var(--spacing-lg);
+}
+
+.columns li {
+  break-inside: avoid;
+}
+
+/* ---------- Link item ---------- */
+
+.link {
+  display: block;
+  padding: var(--spacing-12) var(--spacing-8);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body-sm);
+  color: var(--mm-link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+/* Hover = brighter text + underline. No tinted backgrounds. */
+.link:hover {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: -2px;
+  color: var(--mm-link-hover);
+}
+
+/* ---------- Aside ---------- */
+
+.aside {
+  flex: 0 0 17.5rem; /* 280 */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  padding-inline: var(--spacing-16);
+  background: var(--mm-aside-bg);
+}
+
+.asideSection + .asideSection {
+  border-top: 1px solid var(--mm-rule);
+  padding-top: var(--spacing-12);
+}
+
+.asideTitle {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  min-height: 3.125rem; /* 50 */
+  padding: var(--spacing-12) var(--spacing-8);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: normal;
+  color: var(--mm-aside-title);
+  opacity: 0.6;
+}
+
+.asideList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1200px) {
+  .group {
+    grid-template-columns: 12rem 1fr;
+  }
+}
+
+@media (max-width: 1023px) {
+  .inner {
+    flex-direction: column;
+  }
+  .group {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .aside {
+    flex-basis: auto;
+    padding-block: var(--spacing-md);
+  }
+}
+
+@media (max-width: 599px) {
+  .columns {
+    columns: 1;
+  }
+}
