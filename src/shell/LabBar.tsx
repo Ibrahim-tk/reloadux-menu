@@ -34,7 +34,6 @@ function Stepper({ label, value, max, onChange }: { label: string; value: number
 
 export function LabBar(p: Props) {
   const index = p.variants.findIndex((v) => v.id === p.activeId)
-  const active = p.variants[index]
   const step = (d: number) => p.onSelect(p.variants[(index + d + p.variants.length) % p.variants.length].id)
   const set = (k: keyof ContentScale) => (n: number) => p.onScale({ ...p.scale, [k]: n })
   const isBase = !p.scale.links && !p.scale.groups && !p.scale.aside
@@ -66,9 +65,8 @@ export function LabBar(p: Props) {
         </button>
       </div>
 
-      <p className={styles.notes} title={active?.notes}>
-        {active?.notes}
-      </p>
+      {/* Spacer keeps the controls pushed to the right now the notes text is gone. */}
+      <span className={styles.notes} aria-hidden />
 
       <div className={styles.section}>
         <span className={styles.stats}>

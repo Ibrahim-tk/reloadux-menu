@@ -38,12 +38,17 @@
   height: 2rem;
   min-width: 13rem;
   padding: 0 2rem 0 0.875rem;
-  border: 1px solid var(--color-purple-500);
+  /* Same grey pill as the other Lab bar buttons. */
+  border: 1px solid rgb(255 255 255 / 0.12);
   border-radius: 999px;
-  background: var(--color-purple-500);
-  color: #fff;
+  background: rgb(255 255 255 / 0.04);
+  color: #e6e6e6;
   font: inherit;
   cursor: pointer;
+}
+
+.select select:hover {
+  background: rgb(255 255 255 / 0.1);
 }
 
 .select select:focus-visible {
@@ -60,7 +65,7 @@
   position: absolute;
   right: 0.75rem;
   pointer-events: none;
-  color: #fff;
+  color: #e6e6e6;
 }
 
 .position {
