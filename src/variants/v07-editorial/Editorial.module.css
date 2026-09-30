@@ -21,8 +21,10 @@
 .layout {
   --ed-height: calc(var(--mm-max-height, 70dvh) - 2px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 22rem;
+  grid-template-columns: minmax(0, 1fr) 26rem; /* wide enough for a large case study image */
   max-height: var(--ed-height);
+  max-width: var(--content-max); /* same 1440px content box as the header */
+  margin-inline: auto;
 }
 
 .main,
@@ -40,8 +42,9 @@
 
 .articles {
   /* Two clear rows: article on top, full-bleed CTA below. */
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto; /* articles take the room; CTA hugs its content */
+  /* Spare height is split evenly between featured work and the CTA; only featured work shrinks (and scrolls) when space is short. */
+  display: flex;
+  flex-direction: column;
   padding: 0;
   border-left: 1px solid var(--color-border-subtle);
 }
@@ -81,7 +84,7 @@
 
 .block ul {
   display: grid;
-  gap: var(--spacing-8);
+  gap: var(--spacing-12);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -145,6 +148,8 @@
   font-size: var(--font-size-caption); /* 12px */
   line-height: var(--line-height-caption);
   font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase; /* matches the category eyebrows */
   color: var(--mm-muted);
 }
 
@@ -266,54 +271,116 @@
 /* ---------- CTA under the article ---------- */
 
 .articleRow {
+  flex: 1 1 auto; /* shares spare height equally with the CTA */
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: var(--spacing-xl) var(--ed-gutter) var(--spacing-xl) var(--spacing-xl);
+  padding: var(--spacing-xl) var(--ed-gutter) var(--spacing-lg) var(--spacing-xl);
 }
 
 .cta {
   display: grid;
-  align-content: end;
-  gap: var(--spacing-8);
+  align-content: center;
+  gap: var(--spacing-12);
   padding: var(--spacing-lg) var(--ed-gutter) var(--spacing-lg) var(--spacing-xl);
-  text-decoration: none;
   color: var(--color-white);
-  /* Black fading into a violet glow; purple fallback while it loads. */
-  background: #3b12c9 url("../../assets/cta-glow-bg.png") center 45% / cover no-repeat;
+  /* Near-black with a violet glow in the top-left corner. */
+  background:
+    radial-gradient(70% 90% at 0% 0%, color-mix(in srgb, var(--color-purple-500) 45%, transparent), transparent 70%),
+    var(--color-gray-800);
   border-top: 1px solid var(--color-border-default);
+  flex: 1 0 auto;
 }
 
 .ctaTitle {
-  font-size: var(--font-size-h5);
-  line-height: var(--line-height-h5);
-  font-weight: var(--font-weight-semibold);
+  margin: 0;
+  font-size: var(--font-size-h5); /* 24px */
+  line-height: 1.25;
+  font-weight: var(--font-weight-medium);
   letter-spacing: -0.01em;
 }
 
-.ctaAction {
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md) var(--spacing-lg);
+  margin-top: var(--spacing-md); /* 12px gap + 16px = 28px under the heading */
+}
+
+/* Solid white button, same treatment as the header's "Let's Talk." */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-12) var(--spacing-24);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--font-size-body-sm);
+  line-height: normal;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.ctaButton:hover {
+  opacity: 0.88;
+}
+
+/* Text-only secondary link under the button. */
+.ctaTextLink {
   justify-self: start;
-  font-size: var(--font-size-label-md);
-  line-height: var(--line-height-label-md);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-white);
-  text-shadow: 0 1px 8px rgb(0 0 0 / 0.35); /* stays legible over the bright glow */
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-gray-300);
   text-decoration: underline;
   text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
   text-underline-offset: 0.28em;
   transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
 }
 
-.cta:hover .ctaAction {
+.ctaTextLink:hover {
   color: var(--color-white);
   text-decoration-color: currentColor;
+}
+
+.headlineFull {
+  /* The case study title shows in full. */
+  display: block;
+  -webkit-line-clamp: none;
+  line-clamp: none;
+  overflow: visible;
+}
+
+/* Featured work thumbnail: the project's portrait cover at its native 4:5 ratio. */
+.workThumb {
+  display: block;
+  /* Always full column width, aligned with the text. Height follows the cover's 4:5 shape,
+     but on short screens it is capped and the cover crops from the bottom instead of narrowing. */
+  width: 100%;
+  height: min(calc(100cqi * 1580 / 1264), calc(var(--ed-height) - 25.5rem));
+  overflow: hidden;
+}
+
+.workThumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform-origin: center top;
+  scale: 1.06; /* crops out the rounded corners baked into the cover PNG, leaving square edges */
+  transition: scale var(--duration-base) var(--ease-out);
+}
+
+.article:hover .workThumb img {
+  scale: 1.09;
 }
 
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1200px) {
   .layout {
-    grid-template-columns: minmax(0, 1fr) 18rem;
+    grid-template-columns: minmax(0, 1fr) 21rem;
   }
 }
 

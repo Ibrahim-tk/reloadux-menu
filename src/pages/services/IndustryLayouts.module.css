@@ -1,0 +1,261 @@
+/* Industries section — three candidate layouts on the white background. */
+
+/* Shared type */
+.label {
+  margin: 0;
+  font-family: var(--font-family-serif);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.1;
+}
+
+.label {
+  font-size: var(--font-size-h2);
+  color: var(--sec-ink);
+}
+
+.label a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.headline {
+  margin: 0;
+  max-width: 32rem;
+  font-size: var(--font-size-body-lg); /* 20px */
+  line-height: var(--line-height-body-md);
+  font-weight: var(--font-weight-regular);
+  color: var(--sec-muted);
+}
+
+.button {
+  justify-self: start;
+  align-self: start;
+  margin-top: var(--spacing-8);
+  padding: var(--spacing-12) var(--spacing-24);
+  /* Outlined, like the hero's button. */
+  border: 1px solid var(--sec-ink);
+  background: transparent;
+  color: var(--sec-ink);
+  font-size: var(--font-size-body-sm);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.button:hover {
+  background: var(--sec-ink);
+  color: var(--sec-bg);
+}
+
+/* Placeholder PNG has rounded corners baked in; zooming 6% hides them. */
+.splitMedia img,
+.paneMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  scale: 1.06;
+  transition: scale var(--duration-base) var(--ease-out);
+}
+
+/* Ghost button: text and arrow only, no fill or border. Only the words get the underline. */
+.ghost {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-8);
+  font-size: var(--font-size-body-md);
+  color: var(--sec-ink);
+  text-decoration: none;
+}
+
+.ghostText {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.ghostArrow {
+  transition: translate var(--duration-base) var(--ease-out);
+}
+
+.ghost:hover .ghostText {
+  text-decoration-color: currentColor;
+}
+
+.ghost:hover .ghostArrow {
+  translate: 0.25rem 0;
+}
+
+/* ---------- A · Alternating split ---------- */
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--spacing-4xl);
+  padding-block: var(--spacing-3xl);
+}
+
+.split + .split {
+  border-top: 1px solid var(--sec-line);
+}
+
+.split:first-child {
+  padding-top: 0;
+}
+
+.split[data-flip] .splitText {
+  order: 2;
+}
+
+.splitText {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.splitMedia {
+  display: block;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  background: var(--sec-line);
+}
+
+.split:hover .splitMedia img {
+  scale: 1.1;
+}
+
+/* ---------- B · Sticky index ---------- */
+
+.sticky {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--spacing-4xl);
+}
+
+.index {
+  align-self: start;
+  position: sticky;
+  top: calc(5.375rem + var(--lab-bar-height, 0px) + var(--spacing-3xl)); /* clears the sticky header */
+}
+
+.index ol {
+  display: grid;
+  gap: var(--spacing-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.indexLink {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-h2); /* 48px */
+  line-height: 1.1;
+  color: var(--sec-line);
+  text-decoration: none;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.indexLink:hover,
+.indexLink[data-active] {
+  color: var(--sec-ink);
+}
+
+.panes {
+  display: grid;
+  gap: var(--spacing-section);
+}
+
+.pane {
+  display: grid;
+  gap: var(--spacing-md);
+  scroll-margin-top: calc(5.375rem + var(--lab-bar-height, 0px) + var(--spacing-xl));
+}
+
+.paneMedia {
+  display: block;
+  aspect-ratio: 600 / 362; /* matches the case study thumbnails on reloadux.com */
+  overflow: hidden;
+  margin-bottom: var(--spacing-md);
+  background: var(--sec-line);
+}
+
+.pane:hover .paneMedia img {
+  scale: 1.1;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Layout switcher (prototype only) ---------- */
+
+.switcher {
+  position: fixed;
+  z-index: 60;
+  left: 50%;
+  bottom: var(--spacing-lg);
+  translate: -50% 0;
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  background: var(--color-black);
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.25);
+}
+
+.switcher button {
+  all: unset;
+  padding: var(--spacing-8) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-label-md);
+  color: var(--color-gray-300);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.switcher button:hover {
+  color: var(--color-white);
+}
+
+.switcher button[aria-checked="true"] {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.switcher hr {
+  width: 1px;
+  margin: var(--spacing-4) var(--spacing-4);
+  border: 0;
+  background: var(--color-gray-600);
+}
+
+.switcher button:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .split,
+  .sticky {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  .split[data-flip] .splitText {
+    order: 0;
+  }
+  .index {
+    position: static;
+  }
+  .indexLink {
+    font-size: var(--font-size-h2);
+  }
+}

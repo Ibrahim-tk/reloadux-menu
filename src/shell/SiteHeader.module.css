@@ -18,7 +18,8 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-lg);
-  padding: var(--spacing-20) 3.75rem; /* 20 / 60 */
+  /* 20 / 60, with the side padding growing so the content stays within --content-max. */
+  padding: var(--spacing-20) max(3.75rem, calc((100% - var(--content-max)) / 2 + 3.75rem));
   background: var(--color-surface-secondary);
 }
 

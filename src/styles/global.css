@@ -2,6 +2,8 @@
 
 :root {
   --lab-bar-height: 3.5rem;
+  /* Content never spreads wider than this; backgrounds still run full-bleed. */
+  --content-max: 1440px;
   color-scheme: dark;
 }
 

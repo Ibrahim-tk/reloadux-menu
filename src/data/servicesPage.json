@@ -1,0 +1,130 @@
+{
+  "title": "Services — reloadux",
+  "hero": {
+    "title": [
+      "Services that power",
+      "growth, not just delivery"
+    ],
+    "description": "Partner with us across AI, cloud, engineering, and product to build reliable digital solutions that grow with your business.",
+    "cta": {
+      "label": "Talk to an expert",
+      "href": "/contact-us/"
+    }
+  },
+  "categories": [
+    {
+      "id": "ai-native",
+      "title": "AI native product design",
+      "href": "/service/ai-product-design/",
+      "summary": "Products built around AI from day one — from the first discovery sprint to a dev-ready MVP.",
+      "services": [
+        {
+          "label": "Design discovery",
+          "href": "/service/product-design-discovery/",
+          "summary": "Find the right problem before pixels: interviews, workshops and a validated product direction.",
+          "image": "design-discovery.png"
+        },
+        {
+          "label": "AI use case prioritisation",
+          "href": "/service/ai-use-case-prioritization/",
+          "summary": "Rank AI ideas by user value, feasibility and risk so the roadmap starts with the winners.",
+          "image": "ai-use-case-prioritisation.png"
+        },
+        {
+          "label": "Conversational AI design",
+          "href": "/service/conversational-ai-design/",
+          "summary": "Chat and voice flows that feel human, recover gracefully and know when to hand off.",
+          "image": "conversational-ai-design.png"
+        },
+        {
+          "label": "AI-native design systems",
+          "href": "/service/custom-design-system/",
+          "summary": "Component libraries built for AI features from day one, documented for designers and engineers.",
+          "image": "ai-native-design-systems.png"
+        },
+        {
+          "label": "Agentic workflow UX",
+          "href": "/service/agentic-ai-ux-design/",
+          "summary": "Interfaces for agents that act on the user's behalf — with the right checkpoints and control.",
+          "image": "agentic-workflow-ux.png"
+        },
+        {
+          "label": "Feature adoption UX",
+          "href": "/service/ai-product-design/",
+          "summary": "Get users to the value faster, so new features become daily habits.",
+          "image": "feature-adoption-ux.png"
+        }
+      ]
+    },
+    {
+      "id": "ux-redesign",
+      "title": "UX redesign",
+      "href": "/service/ux-redesign/",
+      "summary": "Modernise products already in market without losing the users who depend on them.",
+      "services": [
+        {
+          "label": "UX audit + AI readiness",
+          "href": "/service/ux-audit-ai-readiness/",
+          "summary": "What to fix, and where AI fits: a prioritised audit of your product's experience.",
+          "image": "ux-audit-ai-readiness.png"
+        },
+        {
+          "label": "AI opportunity mapping",
+          "href": "/service/ai-opportunity-mapping/",
+          "summary": "Map where AI genuinely helps your users, and where it would only add noise.",
+          "image": "ai-opportunity-mapping.png"
+        },
+        {
+          "label": "Legacy UX modernization",
+          "href": "/service/legacy-ux-modernization/",
+          "summary": "Modern UX without a rewrite — staged redesigns that ship alongside your existing product.",
+          "image": "legacy-ux-modernization.png"
+        },
+        {
+          "label": "Design systems",
+          "href": "/service/custom-design-system/",
+          "summary": "Bring consistency to a mature product with a system your whole team can ship from.",
+          "image": "design-systems.png"
+        },
+        {
+          "label": "AI feature experience design",
+          "href": "/service/ai-feature-experience-design/",
+          "summary": "Ship AI features people trust, understand and come back to.",
+          "image": "ai-feature-experience-design.png"
+        }
+      ]
+    },
+    {
+      "id": "team-extension",
+      "title": "Team extension",
+      "href": "/service/team-extension/",
+      "summary": "Senior product designers who plug into your team and ship from week one.",
+      "services": [
+        {
+          "label": "Dedicated product designers",
+          "href": "/service/team-extension/",
+          "summary": "A senior designer embedded in your sprints, rituals and tools.",
+          "image": "dedicated-product-designers.png"
+        },
+        {
+          "label": "AI native design team",
+          "href": "/service/team-extension/",
+          "summary": "A full pod of designers fluent in AI products, scaled to your roadmap.",
+          "image": "ai-native-design-team.png"
+        },
+        {
+          "label": "UX research on demand",
+          "href": "/service/team-extension/",
+          "summary": "Researchers who plan, run and synthesise studies whenever your team needs answers.",
+          "image": "ux-research-on-demand.png"
+        },
+        {
+          "label": "Design ops support",
+          "href": "/service/team-extension/",
+          "summary": "Processes, tooling and handoff that keep a growing design team moving fast.",
+          "image": "design-ops-support.png"
+        }
+      ]
+    }
+  ]
+}

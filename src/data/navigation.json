@@ -241,7 +241,18 @@
           "href": "/work/legacy-saas-redesign",
           "headline": "Redesigning a 10-year-old SaaS without losing its power users"
         }
-      ]
+      ],
+      "featuredWork": {
+        "label": "Eminnt – Empowering B2B Teams to Rank Higher & Get Cited With AI-Native Agentic Workflows",
+        "href": "/work/eminnt",
+        "type": "Case Study",
+        "topic": "AI SaaS"
+      },
+      "ctaPrimary": {
+        "label": "Book an audit",
+        "href": "/contact"
+      },
+      "ctaHeading": "Shipping an AI product? Let’s audit your UX."
     }
   },
   "stressPool": {

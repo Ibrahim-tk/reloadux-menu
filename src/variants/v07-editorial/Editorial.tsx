@@ -1,19 +1,13 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { describe } from '../../data/nav'
-import { LogoMark } from '../../shell/Logo'
+import workThumb from '../../assets/work-eminnt.png'
 import { useOverflowHint } from '../../shell/useOverflowHint'
 import type { PanelProps } from '../types'
 import styles from './Editorial.module.css'
-
-/** Past this many links, descriptions drop out so the menu stays inside the height cap. */
-const DESCRIPTION_LIMIT = 40
 
 export function Editorial({ menu }: PanelProps) {
   const mainRef = useOverflowHint<HTMLDivElement>()
   const railRef = useOverflowHint<HTMLElement>()
   const columns = [...menu.groups, ...menu.aside]
-  const total = columns.reduce((n, g) => n + g.links.length, 0)
-  const showDesc = total <= DESCRIPTION_LIMIT
 
   return (
     <div className={styles.panel}>
@@ -21,7 +15,7 @@ export function Editorial({ menu }: PanelProps) {
         <div className={styles.layout}>
           {/* Links and articles scroll independently so both stay inside the height cap. */}
           <div className={styles.main} ref={mainRef}>
-            <div className={styles.columns} data-desc={showDesc || undefined}>
+            <div className={styles.columns}>
               {columns.map((g) => (
                 <section key={g.id} className={styles.block} aria-labelledby={`ed-${g.id}`}>
                   <h3 id={`ed-${g.id}`} className={styles.eyebrow}>
@@ -37,65 +31,49 @@ export function Editorial({ menu }: PanelProps) {
                     )}
                   </h3>
                   <ul>
-                    {g.links.map((l, i) => {
-                      const desc = showDesc ? describe(l.label) : undefined
-                      return (
-                        <li key={`${l.href}-${i}`}>
-                          <NavigationMenu.Link className={styles.item} href={l.href}>
-                            <span className={styles.itemTitle}>{l.label}</span>
-                            {desc && <span className={styles.itemDesc}>{desc}</span>}
-                          </NavigationMenu.Link>
-                        </li>
-                      )
-                    })}
+                    {g.links.map((l, i) => (
+                      <li key={`${l.href}-${i}`}>
+                        <NavigationMenu.Link className={styles.item} href={l.href}>
+                          <span className={styles.itemTitle}>{l.label}</span>
+                        </NavigationMenu.Link>
+                      </li>
+                    ))}
                   </ul>
                 </section>
               ))}
             </div>
           </div>
 
-          {menu.articles && (
-            <aside className={styles.articles} aria-labelledby="ed-articles" ref={railRef}>
+          <aside className={styles.articles} aria-label="Featured work and contact" ref={railRef}>
+            {menu.featuredWork && (
               <div className={styles.articleRow}>
-              <h3 id="ed-articles" className={styles.articlesTitle}>
-                Latest articles
-              </h3>
-              <ul>
-                {menu.articles.slice(0, 2).map((a) => (
-                  <li key={a.href}>
-                    <NavigationMenu.Link className={styles.article} href={a.href} aria-label={`${a.kicker}: ${a.label}`}>
-                      <span className={styles.cover} aria-hidden>
-                        <span className={styles.sheet}>
-                          <span className={styles.coverLogo}>
-                            <LogoMark />
-                          </span>
-                          <span className={styles.kicker}>{a.kicker}</span>
-                          <span className={styles.coverTitle}>{a.label}</span>
-                        </span>
-                      </span>
-                      <span className={styles.meta}>
-                        <span>{a.type}</span>
-                        <span className={styles.dot} aria-hidden>
-                          •
-                        </span>
-                        <span>{a.topic}</span>
-                      </span>
-                      <span className={styles.headline}>{a.headline}</span>
-                    </NavigationMenu.Link>
-                  </li>
-                ))}
-              </ul>
-              </div>
-              {menu.utility && (
-                <NavigationMenu.Link className={styles.cta} href={menu.utility.cta.href}>
-                  <span className={styles.ctaTitle}>{menu.utility.label}</span>
-                  <span className={styles.ctaAction}>
-                    {menu.utility.cta.label} <span aria-hidden>→</span>
+                <h3 className={styles.articlesTitle}>Featured work</h3>
+                <NavigationMenu.Link className={styles.article} href={menu.featuredWork.href}>
+                  <span className={styles.workThumb}>
+                    <img src={workThumb} alt="" loading="lazy" />
                   </span>
+                  <span className={`${styles.headline} ${styles.headlineFull}`}>{menu.featuredWork.label}</span>
                 </NavigationMenu.Link>
-              )}
-            </aside>
-          )}
+              </div>
+            )}
+            {menu.ctaHeading && (
+              <div className={styles.cta}>
+                <p className={styles.ctaTitle}>{menu.ctaHeading}</p>
+                <div className={styles.ctaActions}>
+                  {menu.ctaPrimary && (
+                    <NavigationMenu.Link className={styles.ctaButton} href={menu.ctaPrimary.href}>
+                      {menu.ctaPrimary.label}
+                    </NavigationMenu.Link>
+                  )}
+                </div>
+                {menu.viewAll && (
+                  <NavigationMenu.Link className={styles.ctaTextLink} href={menu.viewAll.href}>
+                    View all services <span aria-hidden>→</span>
+                  </NavigationMenu.Link>
+                )}
+              </div>
+            )}
+          </aside>
         </div>
       </div>
     </div>

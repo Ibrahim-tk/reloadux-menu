@@ -1,0 +1,240 @@
+{
+  "clients": [
+    {
+      "name": "7-Eleven",
+      "file": "7elev.svg"
+    },
+    {
+      "name": "Digno",
+      "file": "digno-i.svg"
+    },
+    {
+      "name": "EDS",
+      "file": "eds-i.svg"
+    },
+    {
+      "name": "Groupon",
+      "file": "groupon-i.svg"
+    },
+    {
+      "name": "Fintua",
+      "file": "fintua-i.svg"
+    },
+    {
+      "name": "Moment",
+      "file": "moment-i.svg"
+    },
+    {
+      "name": "NBCUniversal",
+      "file": "nbc-u.svg"
+    },
+    {
+      "name": "Nitro League",
+      "file": "nitro-i.svg"
+    },
+    {
+      "name": "Ollivate",
+      "file": "ollivate-i.svg"
+    },
+    {
+      "name": "PeopleGuru",
+      "file": "people-guru.svg"
+    },
+    {
+      "name": "RCN Capital",
+      "file": "rcn-i.svg"
+    },
+    {
+      "name": "REI",
+      "file": "rei-b.svg"
+    },
+    {
+      "name": "Signal",
+      "file": "signal-i.svg"
+    },
+    {
+      "name": "Sterne Kessler",
+      "file": "stern-kess.svg"
+    },
+    {
+      "name": "WorkEasy",
+      "file": "work-eas.svg"
+    }
+  ],
+  "footer": {
+    "contact": {
+      "email": "info@reloadux.com",
+      "phone": "(202) 978 3410",
+      "tel": "+12029783410"
+    },
+    "location": [
+      "11921 Freedom Drive, Two Fountain Square,",
+      "Suite 550, Reston, VA 20190"
+    ],
+    "columns": [
+      {
+        "title": "Resources",
+        "links": [
+          {
+            "label": "Process",
+            "href": "/ux-process/"
+          },
+          {
+            "label": "Work",
+            "href": "/case-studies/"
+          },
+          {
+            "label": "About Us",
+            "href": "/about-us/"
+          },
+          {
+            "label": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "label": "Marketing & Creatives",
+            "href": "/marketing-and-creatives/"
+          }
+        ]
+      },
+      {
+        "title": "Casestudy",
+        "links": [
+          {
+            "label": "Parent connect",
+            "href": "/case-study/global-parents/"
+          },
+          {
+            "label": "Nitro League",
+            "href": "/case-study/nitro/"
+          },
+          {
+            "label": "MMC",
+            "href": "/case-study/mass-media-co/"
+          },
+          {
+            "label": "Digno",
+            "href": "/case-study/digno/"
+          },
+          {
+            "label": "Vocable",
+            "href": "/case-study/vocable/"
+          }
+        ]
+      },
+      {
+        "title": "Services",
+        "links": [
+          {
+            "label": "AI Native Product Design",
+            "href": "/service/ai-product-design/"
+          },
+          {
+            "label": "UX Redesign",
+            "href": "/service/ux-redesign/"
+          },
+          {
+            "label": "Team Extension",
+            "href": "/service/team-extension/"
+          }
+        ]
+      }
+    ],
+    "socials": [
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/company/reload-ux/"
+      },
+      {
+        "label": "Facebook",
+        "href": "https://www.facebook.com/reloadux/"
+      },
+      {
+        "label": "Instagram",
+        "href": "https://www.instagram.com/reloadux/"
+      }
+    ],
+    "wideColumns": [
+      {
+        "title": "Capabilities",
+        "links": [
+          {
+            "label": "UX Audit & AI Readiness",
+            "href": "/service/ux-audit-ai-readiness/"
+          },
+          {
+            "label": "Design discovery",
+            "href": "/service/product-design-discovery/"
+          },
+          {
+            "label": "Conversational AI",
+            "href": "/service/conversational-ai-design/"
+          },
+          {
+            "label": "Agentic Workflow UX",
+            "href": "/service/agentic-ai-ux-design/"
+          },
+          {
+            "label": "AI Opportunity Mapping",
+            "href": "/service/ai-opportunity-mapping/"
+          },
+          {
+            "label": "Design Systems",
+            "href": "/service/custom-design-system/"
+          },
+          {
+            "label": "Usability Testing",
+            "href": "/service/usability-testing/"
+          },
+          {
+            "label": "AI Use Case Prioritisation",
+            "href": "/service/ai-use-case-prioritization/"
+          },
+          {
+            "label": "AI Feature Experience Design",
+            "href": "/service/ai-feature-experience-design/"
+          },
+          {
+            "label": "UI UX Design",
+            "href": "/service/ui-ux-design/"
+          },
+          {
+            "label": "Web Design",
+            "href": "/service/web-design/"
+          },
+          {
+            "label": "Legacy UX Modernization",
+            "href": "/service/legacy-ux-modernization/"
+          }
+        ]
+      },
+      {
+        "title": "Solutions",
+        "links": [
+          {
+            "label": "AI Native Startups",
+            "href": "/ai-native-startups/"
+          }
+        ]
+      },
+      {
+        "title": "Industries",
+        "links": [
+          {
+            "label": "SaaS",
+            "href": "/industry/saas/"
+          },
+          {
+            "label": "Fintech",
+            "href": "/industry/fintech/"
+          },
+          {
+            "label": "Healthcare",
+            "href": "/industry/healthcare/"
+          }
+        ]
+      }
+    ],
+    "legal": "© 2026 Reloadux – all rights reserved | powered by tkxel"
+  }
+}

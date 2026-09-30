@@ -1,0 +1,101 @@
+{
+  "title": "Industries — reloadux",
+  "layout": "split",
+  "hero": {
+    "title": [
+      "Design that knows",
+      "your industry, not just UX"
+    ],
+    "description": "From SaaS to fintech and healthcare, we bring the domain context, compliance know-how and user insight your product needs to earn trust and scale.",
+    "cta": {
+      "label": "Talk to an expert",
+      "href": "/contact-us/"
+    }
+  },
+  "categories": [
+    {
+      "id": "saas",
+      "title": "SaaS",
+      "href": "/industry/saas/",
+      "summary": "B2B platforms, dashboards and CRMs that turn trials into daily habits.",
+      "services": [
+        {
+          "label": "Onboarding & activation",
+          "href": "/industry/saas/",
+          "summary": "First-run flows that get new accounts to their first win faster."
+        },
+        {
+          "label": "Dashboards & data viz",
+          "href": "/industry/saas/",
+          "summary": "Dense data made scannable, from admin consoles to analytics suites."
+        },
+        {
+          "label": "AI features for SaaS",
+          "href": "/industry/saas/",
+          "summary": "Copilots, summaries and automations that fit the workflows users already have."
+        },
+        {
+          "label": "Legacy SaaS redesign",
+          "href": "/industry/saas/",
+          "summary": "Modernise a mature product without breaking what power users rely on."
+        }
+      ]
+    },
+    {
+      "id": "fintech",
+      "title": "Fintech",
+      "href": "/industry/fintech/",
+      "summary": "Banking, payments and trading experiences people trust with their money.",
+      "services": [
+        {
+          "label": "Banking & payments UX",
+          "href": "/industry/fintech/",
+          "summary": "Clear, confident money movement across web and mobile."
+        },
+        {
+          "label": "Onboarding & KYC",
+          "href": "/industry/fintech/",
+          "summary": "Identity and compliance steps that stay rigorous without losing sign-ups."
+        },
+        {
+          "label": "Trading & investing platforms",
+          "href": "/industry/fintech/",
+          "summary": "Real-time data and fast decisions, designed for both beginners and pros."
+        },
+        {
+          "label": "AI for financial products",
+          "href": "/industry/fintech/",
+          "summary": "Explainable insights and assistants that meet regulatory expectations."
+        }
+      ]
+    },
+    {
+      "id": "healthcare",
+      "title": "Healthcare",
+      "href": "/industry/healthcare/",
+      "summary": "Patient, clinical and compliance UX where clarity is a safety feature.",
+      "services": [
+        {
+          "label": "Patient portals & apps",
+          "href": "/industry/healthcare/",
+          "summary": "Appointments, records and messaging that patients of every age can use."
+        },
+        {
+          "label": "Clinical workflow UX",
+          "href": "/industry/healthcare/",
+          "summary": "Tools that save clinicians clicks and reduce errors under pressure."
+        },
+        {
+          "label": "Telehealth experiences",
+          "href": "/industry/healthcare/",
+          "summary": "Virtual care journeys from intake to follow-up."
+        },
+        {
+          "label": "Compliance-aware design",
+          "href": "/industry/healthcare/",
+          "summary": "Privacy and accessibility built in, not bolted on at the end."
+        }
+      ]
+    }
+  ]
+}

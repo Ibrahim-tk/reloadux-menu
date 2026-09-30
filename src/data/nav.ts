@@ -17,6 +17,9 @@ export type MegaMenuData = {
   announcement?: { tag: string; title: string; description: string; href: string }
   statement?: string
   articles?: Article[]
+  featuredWork?: NavLink & { type: string; topic: string }
+  ctaPrimary?: NavLink
+  ctaHeading?: string
 }
 export type TopNavItem = { id: string; label: string; href: string; megaMenu?: string; dropdown?: string }
 export type ResourceCard = Article & { cta: string }

@@ -24,6 +24,8 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 30rem; /* wider rail for tiles */
   max-height: var(--ed-height);
+  max-width: var(--content-max); /* same 1440px content box as the header */
+  margin-inline: auto;
 }
 
 .main,
