@@ -52,7 +52,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  transition: scale var(--duration-base) var(--ease-out);
 }
 
 /* Ghost button: text and arrow only, no fill or border. Only the words get the underline. */
@@ -116,7 +115,7 @@
 
 .splitMedia {
   display: block;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 4 / 3; /* same shape as the industry images, so nothing is cropped */
   overflow: hidden;
   background: var(--sec-line);
 }
@@ -126,14 +125,6 @@
   scale: 1.06; /* the placeholder PNG has rounded corners baked in; zooming hides them */
 }
 
-.split:hover .splitMedia img[data-placeholder],
-.pane:hover .paneMedia img[data-placeholder] {
-  scale: 1.085;
-}
-
-.split:hover .splitMedia img {
-  scale: 1.025; /* barely-there zoom */
-}
 
 /* ---------- B · Sticky index ---------- */
 
@@ -184,14 +175,10 @@
 
 .paneMedia {
   display: block;
-  aspect-ratio: 600 / 362; /* matches the case study thumbnails on reloadux.com */
+  aspect-ratio: 4 / 3; /* same shape as the industry images, so nothing is cropped */
   overflow: hidden;
   margin-bottom: var(--spacing-md);
   background: var(--sec-line);
-}
-
-.pane:hover .paneMedia img {
-  scale: 1.025; /* barely-there zoom */
 }
 
 .srOnly {
