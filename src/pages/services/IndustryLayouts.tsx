@@ -2,6 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import type { Category } from './ServicesPage'
 import styles from './IndustryLayouts.module.css'
 
+// Per-industry images, keyed by file name; industries without one use the placeholder.
+const industryImages = import.meta.glob<string>('../../assets/industries/*', { eager: true, import: 'default' })
+
+/** The industry's own image, or the placeholder (flagged so its baked-in corners get cropped). */
+function IndustryImage({ category, fallback }: { category: Category; fallback: string }) {
+  const own = category.image ? industryImages[`../../assets/industries/${category.image}`] : undefined
+  return <img src={own ?? fallback} data-placeholder={own ? undefined : ''} alt="" loading="lazy" />
+}
+
 type Props = { categories: Category[]; image: string }
 
 const LAYOUTS = [
@@ -29,7 +38,7 @@ function Split({ categories, image }: Props) {
             </a>
           </div>
           <a className={styles.splitMedia} href={c.href} tabIndex={-1} aria-hidden>
-            <img src={image} alt="" loading="lazy" />
+            <IndustryImage category={c} fallback={image} />
           </a>
         </section>
       ))}
@@ -68,7 +77,7 @@ function Sticky({ categories, image }: Props) {
         {categories.map((c) => (
           <section key={c.id} id={`pane-${c.id}`} ref={(el) => void (refs.current[c.id] = el)} className={styles.pane} aria-labelledby={`st-${c.id}`}>
             <a className={styles.paneMedia} href={c.href} tabIndex={-1} aria-hidden>
-              <img src={image} alt="" loading="lazy" />
+              <IndustryImage category={c} fallback={image} />
             </a>
             {/* The pinned index shows the name; keep a heading for screen readers and SEO. */}
             <h2 id={`st-${c.id}`} className={styles.srOnly}>

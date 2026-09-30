@@ -65,7 +65,7 @@ type PageData = {
   layout?: string
   intro?: { eyebrow: string; title: string }
   hero: { title: string[]; cta: { label: string; href: string }; eyebrow?: string; description?: string }
-  categories: { id: string; title: string; href: string; summary: string; services: Service[] }[]
+  categories: { id: string; title: string; href: string; summary: string; image?: string; services: Service[] }[]
 }
 export type Category = PageData['categories'][number]
 
