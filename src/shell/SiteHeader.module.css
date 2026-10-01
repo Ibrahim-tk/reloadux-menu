@@ -147,20 +147,25 @@
 
 /* ---------- Responsive ---------- */
 
+/* Below 1024 the tab row and mega menu give way to MobileMenu. */
 @media (max-width: 1023px) {
   .bar {
     padding-inline: var(--spacing-lg);
   }
-  .list {
-    gap: var(--spacing-lg);
+  .list,
+  .viewportWrap {
+    display: none;
+  }
+  .cta {
+    margin-left: auto;
   }
 }
 
 @media (max-width: 599px) {
+  .bar {
+    padding-block: var(--spacing-16);
+  }
   .cta {
     display: none;
-  }
-  .list {
-    gap: var(--spacing-md);
   }
 }

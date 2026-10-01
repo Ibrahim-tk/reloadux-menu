@@ -1,0 +1,204 @@
+/* Mobile / tablet menu (≤1023px). Same 75% height cap as the desktop mega menu. */
+
+.burger {
+  all: unset;
+  display: none;
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.burger span {
+  position: absolute;
+  left: 0.625rem;
+  right: 0.625rem;
+  height: 1.5px;
+  background: var(--color-text-primary);
+  transition: translate var(--duration-base) var(--ease-out), rotate var(--duration-base) var(--ease-out);
+}
+
+.burger span:first-child { top: calc(50% - 4px); }
+.burger span:last-child { top: calc(50% + 3px); }
+.burger[data-open] span:first-child { translate: 0 3.5px; rotate: 45deg; }
+.burger[data-open] span:last-child { translate: 0 -3.5px; rotate: -45deg; }
+
+.burger:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+.wrap {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .burger {
+    display: block;
+  }
+
+  .wrap {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    max-height: min(75dvh, calc(100dvh - 5.375rem - var(--lab-bar-height, 0px)));
+    background: var(--color-surface-secondary);
+    border-top: 1px solid var(--color-border-subtle);
+    opacity: 0;
+    translate: 0 -0.5rem;
+    visibility: hidden;
+    transition: opacity var(--duration-base) var(--ease-out), translate var(--duration-base) var(--ease-out),
+      visibility 0s linear var(--duration-base);
+  }
+
+  .wrap[data-open] {
+    opacity: 1;
+    translate: 0 0;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+}
+
+.sheet {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--spacing-8) var(--spacing-lg);
+}
+
+.list,
+.sub,
+.links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item[data-level="1"] {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* The footer's top border already closes the list. */
+.item[data-level="1"]:last-child {
+  border-bottom: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.rowLink {
+  all: unset;
+  display: block;
+  flex: 1;
+  padding-block: var(--spacing-16);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+}
+
+.item[data-level="1"] > .rowLink,
+.item[data-level="1"] > .row > .rowLink {
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-sm);
+}
+
+/* Category titles: same eyebrow style as the desktop panels; they link to their page. */
+.item[data-level="2"] > .row > .rowLink {
+  padding-block: var(--spacing-12);
+  font-size: var(--font-size-label-sm);
+  line-height: var(--line-height-label-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.toggle {
+  all: unset;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: -0.75rem;
+  cursor: pointer;
+}
+
+.chevron {
+  display: block;
+  transition: rotate var(--duration-base) var(--ease-out);
+}
+
+[data-theme="light"] .chevron {
+  filter: invert(1);
+}
+
+.item[data-open] > .row .chevron {
+  rotate: 180deg;
+}
+
+.panel {
+  padding-bottom: var(--spacing-12);
+}
+
+.sub {
+  padding-left: var(--spacing-12);
+  border-left: 1px solid var(--color-border-subtle);
+}
+
+.links {
+  padding-bottom: var(--spacing-8);
+}
+
+.link {
+  display: block;
+  padding-block: var(--spacing-8);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+}
+
+/* Hover/focus brightens and underlines; no tinted backgrounds. */
+.link:hover,
+.link:focus-visible,
+.rowLink:hover,
+.rowLink:focus-visible {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+.link:focus-visible,
+.rowLink:focus-visible,
+.toggle:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: var(--spacing-16) var(--spacing-lg) calc(var(--spacing-16) + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12) var(--spacing-24);
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-body-sm);
+  text-decoration: none;
+}

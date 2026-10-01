@@ -194,7 +194,7 @@
 
 .switcher {
   position: fixed;
-  z-index: 60;
+  z-index: 40; /* below the header (50) so the menu scrim covers it */
   left: 50%;
   bottom: var(--spacing-lg);
   translate: -50% 0;

@@ -10,6 +10,7 @@ import { EditorialTiles } from './v11-editorial-tiles/EditorialTiles'
 import { Index } from './v08-index/Index'
 import { Bento } from './v09-bento/Bento'
 import { Accordion } from './v10-accordion/Accordion'
+import { Editorial16 } from './v12-editorial-16/Editorial16'
 
 /**
  * Add a new variant: copy a folder (e.g. v01-classic-grid → v02-something),
@@ -81,5 +82,11 @@ export const variants: Variant[] = [
     name: 'Accordion Columns',
     notes: 'Awwwards pattern: vertical category spines; the hovered one widens to reveal its links. Stacks on narrow screens.',
     Panel: Accordion,
+  },
+  {
+    id: 'v12',
+    name: 'Editorial 16px Titles',
+    notes: 'Copy of Editorial with category titles (and the Featured Work label) at 16px to match the nav tabs.',
+    Panel: Editorial16,
   },
 ]

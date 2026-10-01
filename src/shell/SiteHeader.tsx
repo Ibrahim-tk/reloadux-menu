@@ -4,6 +4,7 @@ import chevron from '../assets/chevron.svg'
 import { nav, type MegaMenuData } from '../data/nav'
 import type { PanelProps } from '../variants/types'
 import { Logo } from './Logo'
+import { MobileMenu } from './MobileMenu'
 import { ResourcesMenu } from './ResourcesMenu'
 import styles from './SiteHeader.module.css'
 
@@ -18,6 +19,7 @@ type Props = {
 export function SiteHeader({ menus, Panel, value, onValueChange }: Props) {
   // Left edge of the tab that owns a small dropdown, so the panel hangs beneath it.
   const [anchor, setAnchor] = useState(0)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const measure = (e: { currentTarget: HTMLElement }) => setAnchor(e.currentTarget.getBoundingClientRect().left)
 
   return (
@@ -26,7 +28,7 @@ export function SiteHeader({ menus, Panel, value, onValueChange }: Props) {
       value={value}
       onValueChange={onValueChange}
       delayDuration={80}
-      data-open={value ? '' : undefined}
+      data-open={value || mobileOpen ? '' : undefined}
     >
       <div className={styles.bar}>
         <Logo href={nav.brand.href} name={nav.brand.name} />
@@ -66,13 +68,15 @@ export function SiteHeader({ menus, Panel, value, onValueChange }: Props) {
         <a className={styles.cta} href={nav.cta.href}>
           {nav.cta.label}
         </a>
+
+        <MobileMenu menus={menus} open={mobileOpen} onOpenChange={setMobileOpen} />
       </div>
 
       <div className={styles.viewportWrap}>
         <NavigationMenu.Viewport className={styles.viewport} />
       </div>
 
-      <div className={styles.scrim} aria-hidden onClick={() => onValueChange('')} />
+      <div className={styles.scrim} aria-hidden onClick={() => (onValueChange(''), setMobileOpen(false))} />
     </NavigationMenu.Root>
   )
 }

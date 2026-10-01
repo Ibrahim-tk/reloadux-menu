@@ -11,6 +11,8 @@
   padding-inline: var(--spacing-md);
   background: rgb(20 20 22 / 0.92);
   backdrop-filter: blur(12px);
+  overflow-x: auto; /* prototype controls scroll instead of overlapping on narrow screens */
+  scrollbar-width: none;
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
   color: #e6e6e6;
   font: 500 0.8125rem/1 var(--font-family-base);

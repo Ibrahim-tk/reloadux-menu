@@ -1,0 +1,411 @@
+/* v07 · Editorial — Lazarev-style: eyebrow-labelled described links, whitepaper-cover article rail. */
+
+.panel {
+  --mm-link: color-mix(in srgb, var(--color-gray-400) 70%, var(--color-gray-500)); /* subtle at rest, white on hover */
+  --mm-muted: var(--color-gray-400);
+  /* Same side gutter as the header bar, so content lines up with the logo and CTA. */
+  --ed-gutter: 3.75rem;
+}
+
+:global([data-theme="light"]) .panel {
+  --mm-muted: var(--color-text-secondary);
+}
+
+/* Full-bleed: spans the header's width, no floating container. */
+.card {
+  overflow: hidden;
+  background: var(--color-surface-secondary);
+  border-block: 1px solid color-mix(in srgb, var(--color-divider) 30%, transparent);
+}
+
+.layout {
+  --ed-height: calc(var(--mm-max-height, 70dvh) - 2px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 26rem; /* wide enough for a large case study image */
+  max-height: var(--ed-height);
+  max-width: var(--content-max); /* same 1440px content box as the header */
+  margin-inline: auto;
+}
+
+.main,
+.articles {
+  min-height: 0;
+  max-height: var(--ed-height);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--spacing-xl);
+}
+
+.main {
+  padding-left: var(--ed-gutter);
+}
+
+.articles {
+  /* Two clear rows: article on top, full-bleed CTA below. */
+  /* Spare height is split evenly between featured work and the CTA; only featured work shrinks (and scrolls) when space is short. */
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-left: 1px solid var(--color-border-subtle);
+}
+
+/* Shared underline hover */
+.itemTitle,
+.eyebrow a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.item:hover .itemTitle,
+.eyebrow a:hover {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+.panel a:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Described link columns ---------- */
+
+.columns {
+  columns: 13.5rem 3;
+  column-gap: var(--spacing-xl);
+}
+
+.block {
+  break-inside: avoid;
+  padding-bottom: var(--spacing-xl);
+}
+
+.block ul {
+  display: grid;
+  gap: var(--spacing-12);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.columns[data-desc] .block ul {
+  gap: var(--spacing-md);
+}
+
+.eyebrow {
+  margin: 0 0 var(--spacing-12);
+  font-size: var(--font-size-body-sm); /* 16px, same as the nav tabs (v01 uses 12px) */
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mm-muted);
+}
+
+.eyebrow a {
+  color: var(--color-gray-200); /* brighter than the links so categories read as headings */
+}
+
+/* ↗ marks the category heading as its own page. */
+.eyebrowArrow {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-left: 0.35em;
+  vertical-align: -0.1em;
+  transition: translate var(--duration-base) var(--ease-out);
+}
+
+.eyebrow a:hover .eyebrowArrow {
+  translate: 0.1em -0.1em;
+}
+
+.item {
+  display: grid;
+  gap: var(--spacing-2);
+  text-decoration: none;
+}
+
+.itemTitle {
+  font-size: var(--font-size-body-sm); /* 16px */
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--mm-link);
+}
+
+.itemDesc {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  color: var(--color-gray-500);
+}
+
+/* ---------- Article rail: whitepaper-cover cards ---------- */
+
+.articlesTitle {
+  margin: 0 0 var(--spacing-md);
+  font-size: var(--font-size-body-sm); /* 16px, matches the category titles */
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase; /* matches the category eyebrows */
+  color: var(--mm-muted);
+}
+
+.articles ul {
+  display: grid;
+  gap: var(--spacing-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.article {
+  display: grid;
+  gap: var(--spacing-12);
+  text-decoration: none;
+  container-type: inline-size;
+}
+
+/* Glow backdrop image; the cover sheet rises from the bottom and is cropped by it. */
+.cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  /* 800×450 purple glow, same 16:9 ratio as the card. Purple fallback while it loads. */
+  background: #0b0720 url("../../assets/cta-bg.png") center top / cover no-repeat;
+}
+
+.sheet {
+  position: absolute;
+  left: 14%;
+  right: 17%;
+  top: 14.5%;
+  bottom: -12%;
+  display: flex;
+  flex-direction: column;
+  padding: 5cqi 5cqi;
+  background: var(--color-black);
+  color: var(--color-white);
+  /* page edges peeking out behind the cover */
+  box-shadow:
+    1.5cqi 1.5cqi 0 0 var(--color-white),
+    2.5cqi 2.5cqi 0 0 color-mix(in srgb, var(--color-purple-500) 25%, var(--color-white));
+  transition: translate var(--duration-base) var(--ease-out);
+}
+
+.article:hover .sheet {
+  translate: 0 -2.5cqi;
+}
+
+.coverLogo {
+  position: relative;
+  display: block;
+  width: 7.5rem;
+  height: 1.6875rem;
+  scale: 0.55;
+  transform-origin: left top;
+  margin-bottom: auto;
+}
+
+.kicker {
+  margin-top: 4cqi;
+  font-size: 3.4cqi;
+  line-height: 1.3;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray-200);
+}
+
+.coverTitle {
+  margin-top: 2cqi;
+  font-size: 6.4cqi;
+  line-height: 1.08;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+  padding-bottom: 14cqi; /* keep the title clear of the cropped bottom edge */
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  font-size: var(--font-size-label-md);
+  line-height: var(--line-height-label-md);
+  color: var(--mm-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.article:hover .meta {
+  color: var(--color-text-primary);
+}
+
+.article:hover .dot {
+  font-size: 0.625rem;
+}
+
+/* Headline under the meta line, as on the reloadux resource cards. */
+.headline {
+  /* Never more than two lines; longer headlines end in an ellipsis. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  font-size: var(--font-size-body-sm); /* 16px */
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.article:hover .headline {
+  text-decoration-color: currentColor;
+}
+
+/* ---------- CTA under the article ---------- */
+
+.articleRow {
+  flex: 1 1 auto; /* shares spare height equally with the CTA */
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--spacing-xl) var(--ed-gutter) var(--spacing-lg) var(--spacing-xl);
+}
+
+.cta {
+  display: grid;
+  align-content: center;
+  gap: var(--spacing-12);
+  padding: var(--spacing-lg) var(--ed-gutter) var(--spacing-lg) var(--spacing-xl);
+  color: var(--color-white);
+  /* Near-black with a violet glow in the top-left corner. */
+  background:
+    radial-gradient(70% 90% at 0% 0%, color-mix(in srgb, var(--color-purple-500) 45%, transparent), transparent 70%),
+    var(--color-gray-800);
+  border-top: 1px solid var(--color-border-default);
+  flex: 1 0 auto;
+}
+
+.ctaTitle {
+  margin: 0;
+  font-size: var(--font-size-h5); /* 24px */
+  line-height: 1.25;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.01em;
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md) var(--spacing-lg);
+  margin-top: var(--spacing-md); /* 12px gap + 16px = 28px under the heading */
+}
+
+/* Solid white button, same treatment as the header's "Let's Talk." */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-12) var(--spacing-24);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--font-size-body-sm);
+  line-height: normal;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.ctaButton:hover {
+  opacity: 0.88;
+}
+
+/* Text-only secondary link under the button. */
+.ctaTextLink {
+  justify-self: start;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-gray-300);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.ctaTextLink:hover {
+  color: var(--color-white);
+  text-decoration-color: currentColor;
+}
+
+.headlineFull {
+  /* The case study title shows in full. */
+  display: block;
+  -webkit-line-clamp: none;
+  line-clamp: none;
+  overflow: visible;
+}
+
+/* Featured work thumbnail: the project's portrait cover at its native 4:5 ratio. */
+.workThumb {
+  display: block;
+  /* Always full column width, aligned with the text. Height follows the cover's 4:5 shape,
+     but on short screens it is capped and the cover crops from the bottom instead of narrowing. */
+  width: 100%;
+  height: min(calc(100cqi * 1580 / 1264), calc(var(--ed-height) - 25.5rem));
+  overflow: hidden;
+}
+
+.workThumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform-origin: center top;
+  scale: 1.06; /* crops out the rounded corners baked into the cover PNG, leaving square edges */
+  transition: scale var(--duration-base) var(--ease-out);
+}
+
+.article:hover .workThumb img {
+  scale: 1.09;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1200px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 21rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+    max-height: none;
+    overflow-y: auto;
+  }
+  .main,
+  .articles {
+    max-height: none;
+    overflow: visible;
+  }
+  .articles {
+    border-left: 0;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+  .articles ul {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+}
+
+@media (max-width: 1023px) {
+  .panel {
+    --ed-gutter: var(--spacing-lg); /* header drops to 24px here too */
+  }
+}
